@@ -1,0 +1,6 @@
+*.class
+*.eml
+*.classpath
+/.settings
+*.factorypath
+/target
