@@ -11,12 +11,12 @@ public class CategoriaController {
 	private static CategoriaController ctrl;
 	
 	//En caso se quiera agregar un producto, el controlador manda a llamar el dao de guardar.
-	public static BeanCategoria saveProduct(BeanCategoria bean){ // El metodo recibe el bean del metodo POST
+	public static BeanCategoria save(BeanCategoria bean){ // El metodo recibe el bean del metodo POST
 		CategoriaDao dao = new CategoriaDao(); //Se instancia el dao
 		return dao.save(bean); // Se le envia el bean al metodo de save para guardar los datos en la BD
 	}
 	
-	public BeanCategoria updateProduct(BeanCategoria bean){ // El metodo recibe el bean del metodo PUT
+	public BeanCategoria update(BeanCategoria bean){ // El metodo recibe el bean del metodo PUT
 		CategoriaDao dao = new CategoriaDao(); //Se instancia el dao//Se instancia el dao
 		return dao.update(bean); // Se le envia el bean al metodo de update para actualizar los datos en la BD
 	}

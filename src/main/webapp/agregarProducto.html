@@ -40,7 +40,7 @@
     
 </head>
           
-<body ng-app = "myapp">
+<body ng-app = "myApp">
     
 <div class="contenedor-fluid"> <!-- General -->
       
@@ -132,17 +132,17 @@
     
       <div class="form-group">
         <label for="nombre">Nombre :</label>
-        <input type="nombre" class="form-control" id="nombre" ng-model="data.productonombre">
+        <input type="nombre" class="form-control" id="nombre" ng-model="data.productoNombre">
       </div>
     
       <div class="form-group">
         <label for="unitario">Precio Unitario (MXN) :</label>
-        <input type="unitario" class="form-control" id="unitario" ng-model="data.preciounitario">
+        <input type="unitario" class="form-control" id="unitario" ng-model="data.precioUnitario">
       </div>
     
       <div class="form-group">
         <label for="venta">Precio De Venta (MXN) :</label>
-        <input type="venta" class="form-control" id="venta" ng-model="data.precioventa">
+        <input type="venta" class="form-control" id="venta" ng-model="data.precioVenta">
       </div>
     
     
@@ -164,15 +164,15 @@
     
       <div class="form-group">
         <label for="fecha">Fecha Caducidad :</label>
-        <input placeholder="Formato(yyyy-mm-dd)" type="fecha" class="form-control" id="fecha" ng-model="data.fechacaducidad">
+        <input placeholder="Formato(yyyy-mm-dd)" type="fecha" class="form-control" id="fecha" ng-model="data.fechaCaducicad">
       </div>
       
              <div class="form-group">
     <div ng-controller="BuscarProveedor">
   <label for="singleSelect"> Proveedor </label><br>
-    <select name="singleSelect" ng-model="data.proveedornombre">
+    <select name="singleSelect" ng-model="data.proveedorNombre">
   	<option value="" default selected>Selecciona un proveedor</option>
-      <option ng-repeat="x in proveedor">{{x.nombre}}</option>
+      <option ng-repeat="x in proveedor">{{x.proveedornombre}}</option>
     </select>
     </div>
   </div> <!-- menu prov -->
@@ -181,20 +181,21 @@
           <div class="form-group">
     <div ng-controller="BuscarCategoria">
   <label for="singleSelect"> Categoria </label><br>
-    <select name="singleSelect" ng-model="data.categorianombre">
+    <select name="singleSelect" ng-model="data.categoriaNombre">
   	<option value="" default selected>Selecciona una categoria </option>
-      <option ng-repeat="x in categoria">{{x.nombre}}</option>
+      <option ng-repeat="x in categoria">{{x.categorianombre}}</option>
     </select>
+    <label>{{x.categoriaId}}</label>
     </div>
   </div> <!-- menu categoria -->
     
     
        <div class="form-group">
-    <div ng-controller="BuscarCategoria">
+    <div ng-controller="BuscarUnidadMedida">
   <label for="singleSelect"> UnidadMedida </label><br>
-    <select name="singleSelect" ng-model="data.unidadmedidanombre">
+    <select name="singleSelect" ng-model="data.unidadmedidaNombre">
   	<option value="" default selected>Selecciona una medida </option>
-      <option ng-repeat="x in unidadmedida">{{x.nombre}}</option>
+      <option ng-repeat="x in unidadmedida">{{x.unidadmedidanombre}}</option>
     </select>
     </div>
   </div> <!-- menu Unidad De Medida -->
@@ -234,4 +235,6 @@
     
 </div><!--body -->  
 </div><!-- General -->
+  <script src="app.js"></script>   
 </body>
+</html>

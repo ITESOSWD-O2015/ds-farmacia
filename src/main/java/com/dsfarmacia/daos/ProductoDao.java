@@ -135,7 +135,7 @@ public class ProductoDao {
 			String sql = "insert into dbo.Producto values (?, ?, ?, ?, ?, ?, "
 					+ "(select p.IDProveedor from  dbo.Proveedor p where ? = p.Nombre ),"
 					+ " (select c.IDCategoria from  dbo.Categoria c where ? = c.Nombre ), "
-					+ "(select m.IDUnidadMedida from  dbo.UnidadMedida m where ? = m.Nombre )";
+					+ "(select m.IDUnidadMedida from  dbo.UnidadMedida m where ? = m.Nombre ))";
 			
 			// Setup the connection with the DB
 			connect = Conexion.getConnection();

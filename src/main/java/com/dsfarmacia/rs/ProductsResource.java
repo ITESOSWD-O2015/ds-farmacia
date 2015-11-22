@@ -61,6 +61,7 @@ public class ProductsResource {
    * @return
    */
   public BeanProducto saveProduct(BeanProducto bean){
+	  System.out.println("Ni siquiera llegue aqui");
 //  public ProductBean saveProduct(@FormParam("id") String id, @FormParam("name") String name,
 //		  @FormParam("categoria") String categoria, @FormParam("precio") String precio,
 //		  @FormParam("marca") String marca, @FormParam("cantidad") String cantidad){

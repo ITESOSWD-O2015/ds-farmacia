@@ -8,12 +8,12 @@ public class BeanProducto {
 	 private double precioventa;
 	 private int cantidad;
 	 private double iva;
-	 private String fechacaducicad;
+	 private String fechacaducidad;
 	 private String proveedornombre;
 	 private int proveedor;
 	 private String categorianombre;
 	 private int categoria;
-	 private String unidadmedidaNombre;
+	 private String unidadmedidanombre;
 	 private int unidadmedida;
 	 
 	public int getProductId() {
@@ -53,10 +53,10 @@ public class BeanProducto {
 		this.iva = iva;
 	}
 	public String getFechaCaducicad() {
-		return fechacaducicad;
+		return fechacaducidad;
 	}
 	public void setFechaCaducicad(String fechaCaducicad) {
-		this.fechacaducicad = fechaCaducicad;
+		this.fechacaducidad = fechaCaducicad;
 	}
 	public String getProveedorNombre() {
 		return proveedornombre;
@@ -83,10 +83,10 @@ public class BeanProducto {
 		this.categoria = categoria;
 	}
 	public String getUnidadmedidaNombre() {
-		return unidadmedidaNombre;
+		return unidadmedidanombre;
 	}
 	public void setUnidadmedidaNombre(String unidadmedidaNombre) {
-		this.unidadmedidaNombre = unidadmedidaNombre;
+		this.unidadmedidanombre = unidadmedidaNombre;
 	}
 	public int getUnidadmedida() {
 		return unidadmedida;
@@ -99,8 +99,8 @@ public class BeanProducto {
 	public String toString() {
 		return "BeanProducto [productId=" + productId + ", productoNombre=" + productonombre + ", precioUnitario="
 				+ preciounitario + ", precioVenta=" + precioventa + ", cantidad=" + cantidad + ", iva=" + iva
-				+ ", fechaCaducicad=" + fechacaducicad + ", proveedorNombre=" + proveedornombre + ", categoriaNombre="
-				+ categorianombre + ", unidadmedidaNombre=" + unidadmedidaNombre + "]";
+				+ ", fechaCaducicad=" + fechacaducidad + ", proveedorNombre=" + proveedornombre + ", categoriaNombre="
+				+ categorianombre + ", unidadmedidaNombre=" + unidadmedidanombre + "]";
 	}
 	 
 	 

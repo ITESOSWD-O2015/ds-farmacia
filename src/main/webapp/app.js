@@ -4,7 +4,7 @@ var app = angular.module('myApp', []);
 
 	app.controller('BuscarProductos', function($scope,$http){
     
-    $http.get("http://localhost:9080/ChoriStore/api/products/")
+    $http.get("http://localhost:8080/FarmaciaJava/api/products/")
     .success(function(response) {$scope.products = response;  //En caso de que sea exitosa la ejeccucion, los datos se muestran en una tabla
     })
     .error(function(){
@@ -16,7 +16,7 @@ var app = angular.module('myApp', []);
 	
 	app.controller('BuscarProveedor', function($scope,$http){
 	    
-	    $http.get("http://localhost:9080/ChoriStore/api/proveedores/")
+	    $http.get("http://localhost:8080/FarmaciaJava/api/proveedores/")
 	    .success(function(response) {$scope.proveedor = response;  //En caso de que sea exitosa la ejeccucion, los datos se muestran en una tabla
 	    })
 	    .error(function(){
@@ -26,10 +26,10 @@ var app = angular.module('myApp', []);
 		}); // Se cierra el controlador de BuscarProveedor
 
 	
-	app.controller('BuscarMarca', function($scope,$http){
+	app.controller('BuscarUnidadMedida', function($scope,$http){
 	    
-	    $http.get("http://localhost:9080/ChoriStore/api/marcas/")
-	    .success(function(response) {$scope.marca = response;  //En caso de que sea exitosa la ejeccucion, los datos se muestran en una tabla
+	    $http.get("http://localhost:8080/FarmaciaJava/api/unidadmedidas/")
+	    .success(function(response) {$scope.unidadmedida = response;  //En caso de que sea exitosa la ejeccucion, los datos se muestran en una tabla
 	    })
 	    .error(function(){
 	    	 alert("Surgio un error"); //En caso de que fallara algo, muestra mensaje de error.
@@ -40,14 +40,14 @@ var app = angular.module('myApp', []);
 	
 		app.controller('BuscarCategoria', function($scope,$http){
 	    
-	    $http.get("http://localhost:9080/ChoriStore/api/categorias/")
+	    $http.get("http://localhost:8080/FarmaciaJava/api/categorias/")
 	    .success(function(response) {$scope.categoria = response;  //En caso de que sea exitosa la ejeccucion, los datos se muestran en una tabla
 	    })
 	    .error(function(){
 	    	 alert("Surgio un error"); //En caso de que fallara algo, muestra mensaje de error.
 	    });
 	    
-		}); // Se cierra el controlador de BuscarProductos
+		}); // Se cierra el controlador de BuscarCategoria
 	
 	
 //	Este es el controlador que buscar un producto en especifico de la Base de Datos
@@ -57,7 +57,7 @@ var app = angular.module('myApp', []);
 		 $scope.buscar = function(){
 			 console.log('Si entre a buscar el id');  //Verificar que se haya ejecutando el click de buscar
 		    	
-		    	 $http.get("http://localhost:9080/ChoriStore/api/products/"+$scope.product)
+		    	 $http.get("http://localhost:8080/FarmaciaJava/api/products/"+$scope.product)
 				    .success(function(response) {$scope.resultado = response; //En caso de que sea exitosa la ejeccucion, los datos se muestran.
 				    
 				    
@@ -106,7 +106,7 @@ var app = angular.module('myApp', []);
 			 
 			 
 //			 	Preguntar porque no se ejecutan los mensajes del delete y el .delete porque marca error
-		    	 $http['delete']("http://localhost:9080/ChoriStore/api/products/"+$scope.resultado.productId)
+		    	 $http['delete']("http://localhost:8080/FarmaciaJava/api/products/"+$scope.resultado.productId)
 				    .success(function() {
 				    		alert("Se elimino el producto exitosamente"); //En caso de que sea exitosa la ejeccucion, muestra mensaje de exito.
 				    					})
@@ -128,7 +128,7 @@ var app = angular.module('myApp', []);
 			 $scope.agregar = function(){
 			 console.log('Si entre a actualizar');  //Verificar que se haya ejecutando el click de actualizar
 		    	
-		    	 $http.put("http://localhost:9080/ChoriStore/api/products/"+$scope.resultado.productId, $scope.resultado)
+		    	 $http.put("http://localhost:8080/FarmaciaJava/api/products/"+$scope.resultado.productId, $scope.resultado)
 				    .success(function() {
 				    	alert("Se actualizo el producto"); //En caso de que sea exitosa la ejeccucion, muestra mensaje de exito.
 				    	$scope.resultado=null //Se limpian los campos de input para ejecutar una nueva actualizacion.

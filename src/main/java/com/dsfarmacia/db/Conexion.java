@@ -11,7 +11,7 @@ public class Conexion implements IConexion {
 		try {
 		      // This will load the MySQL driver, each DB has its own driver
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			return DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=ChoriStore;user=sa;password=sa;");//if there is a password it should place it here.
+			return DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=FarmaciaWeb;user=sa;password=sa;");//if there is a password it should place it here.
 			   
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

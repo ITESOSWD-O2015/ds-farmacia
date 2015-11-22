@@ -4,3 +4,5 @@
 /.settings
 *.factorypath
 /target
+/src/
+/WebContent/

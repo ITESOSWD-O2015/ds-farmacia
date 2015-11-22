@@ -14,11 +14,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.dsfarmacia.beans.BeanCategoria;
-import com.dsfarmacia.controllers.CategoriaController;
+import com.dsfarmacia.beans.BeanUnidadMedida;
+import com.dsfarmacia.controllers.UnidadMedidaController;
 
 
-public class CategoriaResource {
+public class UnidadMedidaResource {
 	
 	@Context
     private HttpServletRequest request;
@@ -26,25 +26,25 @@ public class CategoriaResource {
 	
 	@GET //Este metodo GET es para buscar un id especifico. Recibimos el id de parte del metodo ProductResource
 	  @Consumes({MediaType.TEXT_XML, MediaType.APPLICATION_JSON}) //Regresa un JSON
-	  public Response getCategoria(@PathParam("id") String id){
+	  public Response getUnidadMedida(@PathParam("id") String id){
 
 //		System.out.println("Checking valid session...");
 //		HttpSession session = request.getSession(false);
 //		if(session != null)
 //		{	
-			System.out.println("getting user with name["+id+"]");
+			System.out.println("getting UnidadMedida with name["+id+"]");
 			String patron= id+".*";
 			System.out.println("El patron a buscar es:" + patron);
 		  
-			List<BeanCategoria> lista = new ArrayList<BeanCategoria>();
-			List<BeanCategoria> list = CategoriaController.getController().getList(); //Primero se obtiene la lista con todos los productos
+			List<BeanUnidadMedida> lista = new ArrayList<BeanUnidadMedida>();
+			List<BeanUnidadMedida> list = UnidadMedidaController.getController().getList(); //Primero se obtiene la lista con todos los productos
 			
 			System.out.println(list);
 			//Preguntar que pedob
 			try{
 				int aid = Integer.parseInt(id);
-				for(BeanCategoria b : list){ //Se hace un ciclo for each y comparamos el id de la lista con el ID que recibimos
-					if(b.getCategoriaId() == aid){ //Se hace un parse para se comparen INT.
+				for(BeanUnidadMedida b : list){ //Se hace un ciclo for each y comparamos el id de la lista con el ID que recibimos
+					if(b.getUnidadmedidaId() == aid){ //Se hace un parse para se comparen INT.
 						System.out.println("si soy igual");
 						lista.add(b);
 						System.out.println("quepedo");
@@ -53,9 +53,9 @@ public class CategoriaResource {
 					}
 				}
 			}catch(Exception e){
-				for(BeanCategoria b : list){ //Se hace un ciclo for each y comparamos el id de la lista con el ID que recibimos
+				for(BeanUnidadMedida b : list){ //Se hace un ciclo for each y comparamos el id de la lista con el ID que recibimos
 
-					if(b.getCategorianombre().startsWith(id)){ 
+					if(b.getUnidadmedidanombre().startsWith(id)){ 
 						lista.add(b);
 						//Se hace un parse para se comparen INT.
 						 //Si encuentra el producto en la BD, regresa un ok(200) con el todos los datos.
@@ -87,17 +87,17 @@ public class CategoriaResource {
 	 @PUT
 	  @Consumes({MediaType.TEXT_XML, MediaType.APPLICATION_JSON}) //Regresa un JSON
 	  @Produces({MediaType.TEXT_XML, MediaType.APPLICATION_JSON}) //Convierte el JSON
-	  public Response updateCategoria(@PathParam("id") String id, BeanCategoria bean){
+	  public Response updateUnidadMedida(@PathParam("id") String id, BeanUnidadMedida bean){
 		 
 //		  System.out.println("Checking valid session...");
 //			HttpSession session = request.getSession(false);
 //			if(session != null)
 //			{	
 //				
-				System.out.println("updating user with id["+id+"]");
+				System.out.println("updating unidadMedida with id["+id+"]");
 				System.out.println(bean);
-				bean.setCategoriaId(Integer.parseInt(id)); //Se obtiene el id y se agrega al bean para que sepa que producto actualizar
-				bean = CategoriaController.getController().update(bean); // Se le envio los parametros que se modificaron
+				bean.setUnidadmedidaId(Integer.parseInt(id)); //Se obtiene el id y se agrega al bean para que sepa que producto actualizar
+				bean = UnidadMedidaController.getController().update(bean); // Se le envio los parametros que se modificaron
 				return Response.ok(bean).build(); //Regresa el producto modificado con un ok (200)
 //			}
 //			else{
@@ -108,14 +108,14 @@ public class CategoriaResource {
 	 @DELETE
 	  @Consumes({MediaType.TEXT_XML, MediaType.APPLICATION_JSON})
 	  @Produces({MediaType.TEXT_XML, MediaType.APPLICATION_JSON})
-	  public Response deleteCategoria(@PathParam("id") String id){
+	  public Response deleteUnidadMedida(@PathParam("id") String id){
 //		  System.out.println("Checking valid session...");
 //			HttpSession session = request.getSession(false);
 //			if(session != null)
 //			{
-				System.out.println("deleting user with id["+id+"]");
+				System.out.println("deleting unidadMedida with id["+id+"]");
 				
-				if(CategoriaController.getController().delete(id)){// Se le envia el id para eliminar el producto
+				if(UnidadMedidaController.getController().delete(id)){// Se le envia el id para eliminar el producto
 					return Response.ok().build(); //Regresa una respuesta ok(200) si elimino el producto.
 				}
 				return Response.notModified().build(); //Si no lo elimino regresa un notModified(304)

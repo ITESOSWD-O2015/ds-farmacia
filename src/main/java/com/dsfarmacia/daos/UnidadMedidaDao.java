@@ -7,10 +7,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dsfarmacia.beans.BeanCategoria;
+import com.dsfarmacia.beans.BeanUnidadMedida;
 import com.dsfarmacia.db.Conexion;
 
-public class CategoriaDao {
+
+public class UnidadMedidaDao {
 	
 	private Connection connect = null;
 	private Statement statement = null;
@@ -19,7 +20,7 @@ public class CategoriaDao {
 	public boolean delete(String id){
 		PreparedStatement ps;
 		try {
-			String sql = "DELETE FROM dbo.Categoria WHERE IDCategoria = ?";
+			String sql = "DELETE FROM dbo.UnidadMedida WHERE IDUnidadMedida = ?";
 			// Setup the connection with the DB
 			connect = Conexion.getConnection();
 
@@ -39,10 +40,10 @@ public class CategoriaDao {
 	}
 	
 
-	public BeanCategoria update(BeanCategoria bean){
+	public BeanUnidadMedida update(BeanUnidadMedida bean){
 		PreparedStatement ps;
 		try {
-			String sql = "UPDATE dbo.Categoria SET Nombre = ? Where IDCategoria = ?";
+			String sql = "UPDATE dbo.UnidadMedida SET Nombre = ? Where IDUnidadMedida = ?";
 			
 			// Setup the connection with the DB
 			connect = Conexion.getConnection();
@@ -50,8 +51,8 @@ public class CategoriaDao {
 			// Statements allow to issue SQL queries to the database
 			ps = connect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-			ps.setString(1, bean.getCategorianombre());
-			ps.setInt(2, bean.getCategoriaId());
+			ps.setString(1, bean.getUnidadmedidanombre());
+			ps.setInt(2, bean.getUnidadmedidaId());
 			// Result set get the result of the SQL query
 			
 			ps.execute();
@@ -74,9 +75,9 @@ public class CategoriaDao {
 	}
 	
 	
-	public List<BeanCategoria> get() {
+	public List<BeanUnidadMedida> get() {
 		
-		List<BeanCategoria> list = new ArrayList<BeanCategoria>();
+		List<BeanUnidadMedida> list = new ArrayList<BeanUnidadMedida>();
 		
 		try {
 			// Setup the connection with the DB
@@ -85,12 +86,12 @@ public class CategoriaDao {
 			// Statements allow to issue SQL queries to the database
 			statement = connect.createStatement();
 			// Result set get the result of the SQL query
-			resultSet = statement.executeQuery("select * from dbo.Categoria");
+			resultSet = statement.executeQuery("select * from dbo.UnidadMedida");
 			
 			while (resultSet.next()) {
-				BeanCategoria b = new BeanCategoria();
-				b.setCategoriaId(resultSet.getInt(1));
-				b.setCategorianombre(resultSet.getString(2));
+				BeanUnidadMedida b = new BeanUnidadMedida();
+				b.setUnidadmedidaId(resultSet.getInt(1));
+				b.setUnidadmedidanombre(resultSet.getString(2));
 				
 				
 								
@@ -109,11 +110,11 @@ public class CategoriaDao {
 	}
 	
 	
-	public BeanCategoria save(BeanCategoria bean){
+	public BeanUnidadMedida save(BeanUnidadMedida bean){
 		PreparedStatement ps;
 		
 		try {
-			String sql = "insert into dbo.Categoria values (?)";
+			String sql = "insert into dbo.UnidadMedida values (?)";
 			
 			// Setup the connection with the DB
 			connect = Conexion.getConnection();
@@ -121,7 +122,7 @@ public class CategoriaDao {
 			// Statements allow to issue SQL queries to the database
 			ps = connect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
-			ps.setString(1, bean.getCategorianombre());
+			ps.setString(1, bean.getUnidadmedidanombre());
 			
 
 			
@@ -133,7 +134,7 @@ public class CategoriaDao {
 			if (rs.next()) {
 			    generatedKey = rs.getInt(1);
 			}
-			bean.setCategoriaId(generatedKey);
+			bean.setUnidadmedidaId(generatedKey);
 			return bean;
 
 		} catch (Exception e) {

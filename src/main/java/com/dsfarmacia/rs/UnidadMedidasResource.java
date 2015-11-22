@@ -14,11 +14,12 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.dsfarmacia.beans.BeanCategoria;
-import com.dsfarmacia.controllers.CategoriaController;
+import com.dsfarmacia.beans.BeanUnidadMedida;
+import com.dsfarmacia.controllers.UnidadMedidaController;
 
-@Path("/categorias")
-public class CategoriasResource {
+
+@Path("/unidadmedidas")
+public class UnidadMedidasResource {
 	
 	@Context
 	  private HttpServletRequest request;
@@ -29,14 +30,14 @@ public class CategoriasResource {
 	   * Returns all products from database.
 	   * @return
 	   */
-	  public Response getCategoria() {
-		  System.out.println("Checking valid session...");
+	  public Response getUnidadMedida() {
+//		  System.out.println("Checking valid session...");
 //			HttpSession session = request.getSession(false);
 //			if(session != null)
 //			{	
-				System.out.println("Getting list of users...");
-				List<BeanCategoria> list = CategoriaController.getController().getList(); // Se obtiene una lista con los productos de la BD
-				GenericEntity<List<BeanCategoria>> entity = new GenericEntity<List<BeanCategoria>>(list) {};
+				System.out.println("Getting list of measures...");
+				List<BeanUnidadMedida> list = UnidadMedidaController.getController().getList(); // Se obtiene una lista con los productos de la BD
+				GenericEntity<List<BeanUnidadMedida>> entity = new GenericEntity<List<BeanUnidadMedida>>(list) {};
 				System.out.println(list);
 				if(list.isEmpty()){// Si no hay ningun producto en la base de Datos manda un http response 204. (no content)
 					return Response.noContent().build();
@@ -58,7 +59,7 @@ public class CategoriasResource {
 	   * @param msg
 	   * @return
 	   */
-	  public BeanCategoria saveCategoria(BeanCategoria bean){
+	  public BeanUnidadMedida saveUnidadMedida(BeanUnidadMedida bean){
 	//  public ProductBean saveProduct(@FormParam("id") String id, @FormParam("name") String name,
 //			  @FormParam("categoria") String categoria, @FormParam("precio") String precio,
 //			  @FormParam("marca") String marca, @FormParam("cantidad") String cantidad){
@@ -67,7 +68,7 @@ public class CategoriasResource {
 		//	if(session != null)
 		//	{	
 		  
-		  	System.out.println("Saving a product...");
+		  	System.out.println("Saving a measure unit...");
 		    System.out.println(bean.toString());
 //		   	ProductBean bean = new ProductBean();
 //		   	bean.setProductId(Integer.parseInt(id));
@@ -76,22 +77,22 @@ public class CategoriasResource {
 //		   	bean.setPrecio(Integer.parseInt(precio));
 //		   	bean.setMarca(Integer.parseInt(marca));
 //		   	bean.setCantidad(Integer.parseInt(cantidad));
-			CategoriaController.getController(); //Se crea el controlador, en caso de no existir.
-			bean = CategoriaController.save(bean); //Se le envia el bean al DAO para guardarlos en la BD
+			UnidadMedidaController.getController(); //Se crea el controlador, en caso de no existir.
+			bean = UnidadMedidaController.save(bean); //Se le envia el bean al DAO para guardarlos en la BD
 			System.out.println(bean);
 			return bean;
 	  }
 
 	  
 	@Path("/{id}") //El metodo entra aqui si encuentra en la url un ID
-	public CategoriaResource getCategorias(@PathParam("id") String id) {
+	public UnidadMedidaResource getUnidadMedidas(@PathParam("id") String id) {
 		  //System.out.println("Checking valid session...");
 		//	HttpSession session = request.getSession(false);
 		//	if(session != null)
 		//	{	
-				CategoriaResource categoria = new CategoriaResource(); // Buscamos un id en especifico, delete o update
-				System.out.println(categoria);
-				return categoria;
+				UnidadMedidaResource unidad = new UnidadMedidaResource(); // Buscamos un id en especifico, delete o update
+				System.out.println(unidad);
+				return unidad;
 		//	}
 		//	else{
 				 // return Response.status(Response.Status.FORBIDDEN).build();
