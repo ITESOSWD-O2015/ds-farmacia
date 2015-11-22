@@ -6,6 +6,26 @@ public class Conexion implements IConexion {
 
 	private Connection con = null;
 	
+	
+	public static Connection getConnection(){
+		try {
+		      // This will load the MySQL driver, each DB has its own driver
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			return DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=ChoriStore;user=sa;password=sa;");//if there is a password it should place it here.
+			   
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	
+	
 		public Connection getConexion(){
 			return getCon();
 		}
@@ -54,9 +74,6 @@ public class Conexion implements IConexion {
 		return true;
 	}
 
-	
-	
-	
 	@Override
 	public boolean crearConexion() {
 			try {

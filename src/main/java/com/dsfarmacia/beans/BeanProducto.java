@@ -2,58 +2,108 @@ package com.dsfarmacia.beans;
 
 public class BeanProducto {
 	 
-	 private String iD;
-	 private String descripcion;
-	 private String precio;
-	 private String cantidad;
-	 private String iVA;
-	 private String fechaCaducicad;
+	 private int productId;
+	 private String productonombre;
+	 private double preciounitario;
+	 private double precioventa;
+	 private int cantidad;
+	 private double iva;
+	 private String fechacaducicad;
+	 private String proveedornombre;
+	 private int proveedor;
+	 private String categorianombre;
+	 private int categoria;
+	 private String unidadmedidaNombre;
+	 private int unidadmedida;
 	 
-	 public BeanProducto(String id, String descripcion, String precio, String cantidad, String iva, String caducidad) {
-		super();
-		this.iD = id;
-		this.descripcion = descripcion;
-		this.precio = precio;
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+	public String getProductoNombre() {
+		return productonombre;
+	}
+	public void setProductoNombre(String productoNombre) {
+		this.productonombre = productoNombre;
+	}
+	public double getPrecioUnitario() {
+		return preciounitario;
+	}
+	public void setPrecioUnitario(double precioUnitario) {
+		this.preciounitario = precioUnitario;
+	}
+	public double getPrecioVenta() {
+		return precioventa;
+	}
+	public void setPrecioVenta(double precioVenta) {
+		this.precioventa = precioVenta;
+	}
+	public int getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
-		this.iVA = iva;
-		this.fechaCaducicad = caducidad;
-		}
+	}
+	public double getIva() {
+		return iva;
+	}
+	public void setIva(double iva) {
+		this.iva = iva;
+	}
+	public String getFechaCaducicad() {
+		return fechacaducicad;
+	}
+	public void setFechaCaducicad(String fechaCaducicad) {
+		this.fechacaducicad = fechaCaducicad;
+	}
+	public String getProveedorNombre() {
+		return proveedornombre;
+	}
+	public void setProveedorNombre(String proveedorNombre) {
+		this.proveedornombre = proveedorNombre;
+	}
+	public int getProveedor() {
+		return proveedor;
+	}
+	public void setProveedor(int proveedor) {
+		this.proveedor = proveedor;
+	}
+	public String getCategoriaNombre() {
+		return categorianombre;
+	}
+	public void setCategoriaNombre(String categoriaNombre) {
+		this.categorianombre = categoriaNombre;
+	}
+	public int getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(int categoria) {
+		this.categoria = categoria;
+	}
+	public String getUnidadmedidaNombre() {
+		return unidadmedidaNombre;
+	}
+	public void setUnidadmedidaNombre(String unidadmedidaNombre) {
+		this.unidadmedidaNombre = unidadmedidaNombre;
+	}
+	public int getUnidadmedida() {
+		return unidadmedida;
+	}
+	public void setUnidadmedida(int unidadmedida) {
+		this.unidadmedida = unidadmedida;
+	}
+	
+	@Override
+	public String toString() {
+		return "BeanProducto [productId=" + productId + ", productoNombre=" + productonombre + ", precioUnitario="
+				+ preciounitario + ", precioVenta=" + precioventa + ", cantidad=" + cantidad + ", iva=" + iva
+				+ ", fechaCaducicad=" + fechacaducicad + ", proveedorNombre=" + proveedornombre + ", categoriaNombre="
+				+ categorianombre + ", unidadmedidaNombre=" + unidadmedidaNombre + "]";
+	}
 	 
-	 public String getiD() {
-	  return iD;
-	 }
-	 public void setiD(String id) {
-	  this.iD = id;
-	 }
-	 public String getDescripcion() {
-	  return descripcion;
-	 }
-	 public void setDescripcion(String descripcion) {
-	  this.descripcion = descripcion;
-	 }
-	 public String getPrecio() {
-	  return precio;
-	 }
-	 public void setPrecio(String precio) {
-	  this.precio = precio;
-	 }
-	 public String getCantidad() {
-	  return cantidad;
-	 }
-	 public void setCantidad(String cantidad) {
-	  this.cantidad = cantidad;
-	 }
-	 public String getIva() {
-	  return iVA;
-	 }
-	 public void setIva(String iva) {
-	  this.iVA = iva;
-	 }
-	 public String getCaducidad() {
-	  return fechaCaducicad;
-	 }
-	 public void setCaducidad(String caducidad) {
-	  this.fechaCaducicad = caducidad;
-	 }
 	 
+	
+	
 	}
