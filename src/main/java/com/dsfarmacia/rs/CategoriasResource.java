@@ -1,5 +1,6 @@
 package com.dsfarmacia.rs;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +35,8 @@ public class CategoriasResource {
 //			HttpSession session = request.getSession(false);
 //			if(session != null)
 //			{	
+		  
+		  
 				System.out.println("Getting list of users...");
 				List<BeanCategoria> list = CategoriaController.getController().getList(); // Se obtiene una lista con los productos de la BD
 				GenericEntity<List<BeanCategoria>> entity = new GenericEntity<List<BeanCategoria>>(list) {};

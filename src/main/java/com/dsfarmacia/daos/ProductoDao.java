@@ -99,7 +99,7 @@ public class ProductoDao {
 			statement = connect.createStatement();
 			// Result set get the result of the SQL query
 			resultSet = statement.executeQuery("select p.IDProducto, p.Descripcion, p.PrecioVenta, p.PrecioUnitario,"
-					+ " p.IVA, p.Existencia, pr.Nombre, c.Nombre, u.Nombre from Producto p, Proveedor pr, "
+					+ " p.IVA, p.Existencia, p.FechaCaducidad, pr.Nombre, c.Nombre, u.Nombre from Producto p, Proveedor pr, "
 					+ "UnidadMedida u, Categoria c where p.IDProveedor = pr.IDProveedor AND p.IDCategoria = c.IDCategoria "
 					+ "AND p.IDUnidadMedida = u.IDUnidadMedida");
 			
@@ -111,9 +111,10 @@ public class ProductoDao {
 				b.setPrecioUnitario(resultSet.getDouble(4));
 				b.setIva(resultSet.getDouble(5));
 				b.setCantidad(resultSet.getInt(6));
-				b.setProveedorNombre(resultSet.getString(7));
-				b.setCategoriaNombre(resultSet.getString(8));
-				b.setUnidadmedidaNombre(resultSet.getString(9));
+				b.setFechaCaducicad(resultSet.getString(7));
+				b.setProveedorNombre(resultSet.getString(8));
+				b.setCategoriaNombre(resultSet.getString(9));
+				b.setUnidadmedidaNombre(resultSet.getString(10));
 				
 				list.add(b);
 				

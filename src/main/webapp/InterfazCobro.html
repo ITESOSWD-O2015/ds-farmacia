@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-  <title>Search Item</title>
-    
-       <link rel="stylesheet" href="CSS/OntCobro2.0.css"></link>   
-     
-    
-    
-    <!-- librerias de bootstrap -->
-    
+​
+  <title>Agregar producto</title>
+    <link rel="stylesheet" href="OntCobro2.0.css"></link>
+      
+		
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-
+​
+​
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+​
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-
+​
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        
+​
+​
 </head>
     
     
     
     
-<body ng-app = "myapp">
+<body ng-app = "myApp">
     
 <div class="contenedor-fluid"> <!-- General -->
       
@@ -55,14 +69,14 @@
 </nav>
       
 <div class= "row"><!--body -->  
-
+​
     
     
 <div class = "col-sm-2"><!--izq -->
-
-
+​
+​
 <div id="wrapper">
-
+​
        <!-- Sidebar -->
         <div id="sidebar-wrapper">
                 <ul class="sidebar-nav nav">
@@ -97,10 +111,11 @@
 </div> <!--izq -->        
     </div>    
         
-
+​
     
 <div class = "col-sm-8"> <!--centro --> 
     
+    <div ng-controller="BuscarIDController">
      <form class="form-inline text-center">                       
         <div class="form-group">
             <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
@@ -111,149 +126,210 @@
                 
                 
                 <!-- inicio del ng para buscar el item en la BD y guardarlo en el arreglo que luego lo pasara en la tabla de ventas -->
-                <input type="text" class="form-control" ng-model = "elementoItem" placeholder="Item Name - ID">
+                <input type="text" class="form-control"  placeholder="Item Name - ID" ng-model="product">
             </div><!-- input group-->
         </div><!-- form group -->
          
          <!--En el label conseguimos el id o nombre del item, este lo busca en la bd y lo regresa los datos , los cuales los guardamos en una tabla para luego imprimirlos en pantalla -->
          
-    <button type="submit" class="btn btn-primary" ng-click = "agregarALista(elementoItem)">Buscar</button>
+    <button type="submit" class="btn btn-primary" ng-click = "buscar()">Buscar</button>
                                 
                                
 </form>
     
     
-    
-    <div class = "row" ng-controller = "tablaVentas"><!--Tabla ventas , controller-->  
+<!-- TABLA ---------------------------------------------------------------------------------------------------------->    
+    <div class = "row" style = "margin-bottom:10%"><!--Tabla ventas , controller-->  
       <table class="table table-striped">
           <thead>
             <tr>
                 <th>Producto</th>
-                <th>ID</th>
-                <!--<th>Piezas</th>-->
-               <!-- <th>Unitario</th> -->
+                <th>Piezas</th>
                 <th>Costo</th>
                 <th>Cancelar</th>
             </tr>
           </thead>
           
           <tbody>
-            <tr ng-repeat = "dato in datos">
-        <td>{{dato.itemName}}</td>
-        <td>{{dato.itemId}}</td>
-        <!--<td>{{dato.itemPieza}}</td>-->
-        <td>{{dato.itemCosto}}</td>
-       <!-- <td>1600</td> -->
-        <td> <button type="button" class="btn btn-primary btn-xs">X</button></td>
+            <tr ng-repeat="r in resultado">
+        <td>{{r.productoNombre}}</td>
+        <td>    <input type="text"   placeholder="cantidad" ng-model="test"></td>
+        <td>{{r.precioVenta}}</td>
+        
+      
+        <td> <button type="button" class="btn btn-primary btn-xs" ng-click="delet($index)">X</button></td>
             </tr>
-              
-              <!--
-            <tr>
-        <td>Sandia</td>
-        <td>2444711</td>
-        <td>3</td>
-        <td>50</td>
-        <td>150</td>
-        <td> <button type="button" class="btn btn-primary btn-xs">X</button></td>
-      </tr>
-            <tr>
-        <td>Gelatina</td>
-        <td>88844711</td>
-        <td>1</td>
-        <td>800</td>
-        <td>800</td>
-        <td> <button type="button" class="btn btn-primary btn-xs">X</button></td>
-      </tr>
-            -->
+            
           </tbody>
       </table>
     </div>       <!--Tabla ventas -->  
-
+    <!-- -------------------------------------------------------------------------------------------------------------------------->
+​
     
-    
-    
-    <div class = "row "><!--total Froma De Pago --> 
+    <!-- CUADROS: FORMA DE PAGO/TOTAL /CAMBIO------------------------------------------------------------------------------------->  
         
-        <div class=" col-md-1"></div> <!--Espacio a la izquierda-->
-     
-      
-        <div class = "col-md-5"><!-- Total , subtotal, Iva -->
+        
+        
+        
+    
+    <!-- CUADRO TOTAL, SUBTOTAL IVA ---------------------------------------------------------------------------------------------->
+    <div class = "row "><!--CUADROS--> 
+        
+            <div class = "col-md-4"><!-- Total , subtotal, Iva -->
               <div class="panel panel-default"><!--panel-->
-                   <div class="panel-heading">Cuenta</div>
+                   <div class="panel-heading">Pago</div>
                    
                    <div class="panel-body"> 
                        
-                        <input class="form-control col-xs-4" type="text" placeholder="Subtotal $ : xxxxxxxxxx " readonly> 
-                        <input class="form-control col-xs-4" type="text" placeholder="Iva $ : xxxxxxxxxxxx" readonly>
-                        <input class="form-control col-xs-4" type="text" placeholder="Total $ : xxxxxxxxxxxx" readonly>
-                   <div class=" text-center"><!--botones-->
-                        <button type="button " class="btn btn-success">Cobrar</button>
-                        <button type="button" class="btn btn-danger">Cancelar</button>
-                   </div>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label" for="subtotal">Subtotal</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="text" id="subtotal" placeholder="Subtotal $ : xxxxxxxxxx " ng-model="dinerito.subtotal" readonly> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label" for="subtotal">IVA</label>
+                                <div class="col-xs-9">
+                                    <input  class="form-control" type="text" placeholder="Iva $ : xxxxxxxxxxxx" ng-model="dinerito.iva" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label" for="subtotal">Total</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="text" placeholder="Total $ : xxxxxxxxxxxx" ng-model="dinerito.total" readonly>
+                                </div>
+                            </div>
+                       </form>
+                        
+                        <div class="row">
+                            <div class ="col-xs-12">
+                                <div class=" text-center"  style = "margin-top: 1em"><!--botones-->
+                                    <button type="button " class="btn btn-success">Cobrar</button>
+                                    <button type="button" class="btn btn-danger">Cancelar</button>
+                               </div>
+                            </div>
+                       </div>
                        
                    </div><!--panel body-->
-
+​
             </div> <!--panel-->
-        </div><!-- Total , subtotal, Iva -->
+        </div><!-- Total , subtotal, Iva -->    
+        
+    <!-- -------------------------------------------------------------------------------------------------------------------> 
         
         
         
         
         
-           <div class = "col-md-5"><!--Froma De Pago --> 
+    
+        
+        
+        
+        
+    <!-- CUADRO FORMA DE PAGO ---------------------------------------------------------------------------------------------->
+           <div class = "col-md-8"><!--Froma De Pago --> 
                <div class="panel panel-default"><!--panel-->
                    
                    <div class="panel-heading">Forma De Pago</div>
                    
                    
                    <div class="panel-body"> 
-                        <div class="radio">
-                            <label><input type="radio" name="optradio">Efectivo</label>
-                        </div>
+                       <div class ="col-md-6"><!-- Lado derecho -->
+                           
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Efectivo</label>
+                            </div>
                        
-                        <div class="radio">
-                            <label><input type="radio" name="optradio">Tarjeta</label>
-                        </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Tarjeta</label>
+                           </div>
                        
-                        <div class="radio">
-                            <label><input type="radio" name="optradio" >Vales</label>
-                        </div>
+                          
+                           
                        
-                   <div class="row"><!--Barra Pago-->
-                     <div class="col-lg-8"><!--col-lg-8 -->
-                        <div class="input-group">
+                           <div class="row"><!--Barra Pago-->
+                       
+                                <div class="col-lg-12"><!--Largo Barrita Monto pago -->
+                                    <div class="input-group"><!--input-group -->
                             
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Pagar</button>
-                            </span>
-                        <input type="text" class="form-control" placeholder="Monto a Pagar">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" ng-click="pagar()">Pagar</button>
+                                        </span>
+                                            <input type="text" class="form-control" placeholder="Monto a Pagar" ng-model = "monto.total">
                             
-                        </div><!--input-group -->
-                     </div><!--col-lg-8 -->
-                   </div><!--Barra Pago-->
+                                    </div><!--input-group -->
+                                </div><!--Largo Barrita Monto pago-->
+                           </div><!--Barra Pago-->
+                       </div><!-- Lado derecho -->
+                       
+                       <div class="col-md-6"><!-- Lado IZQUIERDO -->
+                         <form class="form-horizontal">
+                                                       
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label" for="total">Total</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="text" placeholder="Total $ : xxxxxxxxxxxx" ng-model="dinerito.total" readonly>
+                                </div>
+                            </div>
+                                                       
+                                                       
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label" for="subtotal">Pago</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="text" id="pago" placeholder="Pago $ : xxxxxxxxxx " ng-model="monto.total" readonly> 
+                                </div>
+                            </div>
+                             
+                             
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label" for="cambio">Cambio</label>
+                                <div class="col-xs-9">
+                                    <input  class="form-control" type="text" placeholder="cambio $ : xxxxxxxxxxxx" ng-model="monto.cambio" readonly>
+                                </div>
+                            </div>
+​
+                       </form>
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
                        
                        
+    
                        
+                       </div><!-- Lado derecho -->
                        
-                   </div><!--panel body-->
-                   
+​
+                       
+                   </div><!--panel body -->
                </div> <!--panel-->
-            </div><!--Froma De Pago -->
-        
-
+            </div><!--Froma De Pago -->        
+​
         
         
                 <div class=" col-md-4"></div> <!--Espacio a la derecha-->
-
+​
     
-    </div><!--total Froma De Pago -->  
+    </div><!--CUADROS -->  
+<!-- -------------------------------------------------------------------------------------------------------------------->
+​
     
-    
-    
+   </div> 
 </div><!--centro --> 
     
 <div class = "col-sm-2"><!--der --> 
-
+​
 <div class="container-fluid">
   <h1 style="text-align:center">Mensajes</h1>  
     <textarea class="form-control" rows="15"  id="comment" ng-model="mensajes"></textarea>
@@ -261,7 +337,7 @@
 </div> <!--Der -->     
     
  
-
+​
 <div class = "row"></div>
     
     
@@ -278,8 +354,10 @@
    <!-- </div><!--Botones Ok Cancelar -->  
     
     
-
+​
     
 </div><!--body -->  
 </div><!-- General -->
+  <script src="app.js"></script>   
 </body>
+</html>

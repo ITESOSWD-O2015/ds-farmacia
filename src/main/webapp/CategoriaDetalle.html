@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-  <title>Agregar producto</title>
+ <title>Agregar producto</title>
     <link rel="stylesheet" href="OntCobro2.0.css"></link>
       
 		
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-
-
+​
+​
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+​
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-
+​
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,9 +36,15 @@
 	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    
+            
+
+
+
 </head>
-          
+    
+    
+    
+    
 <body ng-app = "myApp">
     
 <div class="contenedor-fluid"> <!-- General -->
@@ -78,7 +83,7 @@
                 <ul class="sidebar-nav nav">
                     <li>  
                         <a href="BuscarProducto.html">
-                            <span> <i class="fa fa-bar-chart"></i>  Agregar Producto</span>
+                            <span> <i class="fa fa-bar-chart"></i>  Agregar Categoria</span>
                         </a>
                     </li>
                     <li>
@@ -99,7 +104,7 @@
                     
                     <li>
                         <a href="EliminarProduct.html">
-                            <span> <i class="fa fa-ambulance"></i>  Buscar Producto</span>
+                            <span> <i class="fa fa-ambulance"></i>  Buscar Categoria</span>
                         </a>
                     </li>
                                         <li>
@@ -113,142 +118,100 @@
 </div> <!--izq -->        
     </div>    
         
-
+<div ng-controller="RecetaController">
     
 <div class = "col-sm-8"> <!--centro --> 
-  <div ng-controller="AgregarProducto">
+    
+<!-------------------------------------------------------------------------Buscador ----------------------------------------->
+    <div class="jumbotron text-center" ><!- jumbotron -->
+        <h1>Hello Categorias !</h1>
+        
+        <form class="form-inline"><!-- inline -->                
+            <div class="form-group"><!-- form group -->
+                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Nombre o ID ?">
+                </div>
+            </div><!-- form group -->
+                                
+                <button id="myBtn" ng-click="aceptar()" value="aceptar"  type="submit" class="btn btn-primary" >Aceptar</button> 
+                <button id="myBtn2" onclick="window.close();" ng-click="buscar()" value="cancelar"  type="submit" class="btn btn-primary">Cancelar</button>                 
+        </form><!-- inline -->   
+     </div><!- jumbotron -->
+        
+        
+
+<!------------------------------------------------------------------------------------------------------------------------------>
+<!-------------------------------------------------------------------------Actualizador ----------------------------------------->
+    
+<form role="form">
 
     
-
-<div class="contenedor-fluid"><!--  Formulario -->
-    
-     <div class="jumbotron text-center" style = "background: #00a2cc" >
-                            <h1>Hello Inventario !</h1>
-                        </div>
-    
-</div><!--  Formulario -->
-    
-<!------------------------------------------Campo Formulario----------------------------------------------------------------------------->
-    
-      <div class="form-group">
-        <label for="nombre">Nombre :</label>
-        <input type="nombre" class="form-control" id="nombre" ng-model="data.productoNombre">
-      </div>
-    
-      <div class="form-group">
-        <label for="unitario">Precio Unitario (MXN) :</label>
-        <input type="unitario" class="form-control" id="unitario" ng-model="data.precioUnitario">
-      </div>
-    
-      <div class="form-group">
-        <label for="venta">Precio De Venta (MXN) :</label>
-        <input type="venta" class="form-control" id="venta" ng-model="data.precioVenta">
-      </div>
     
     
-      <div class="form-group">
-        <label>IVA (MXN) :</label>
-          <div class="input-group">
-                <input type="text" class="form-control" ng-model="data.iva">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button">Calcular</button>
-                    </span>
-          </div><!-- input-group -->
-      </div>
+    <div class="panel panel-info"><!-- detalles categorias -->
+      <div class="panel-heading">Detalle De Categorias</div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                                
+                <thead>
+                   <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripcion:</th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                        <td>24544711</td>
+                        <td>China</td>
+                        <td>bla bla bla bla nla bla chao</td>        
+                   </tr>
+ 
+                </tbody>
+            </table>
+        </div><!--body panel -->
+    </div><!-- detalles categorias -->
+    
+  
+</form>
 
     
-      <div class="form-group">
-        <label for="cantidad">Cantidad :</label>
-        <input type="cantidad" class="form-control" id="cantidad" ng-model="data.cantidad">
-      </div>
-    
-      <div class="form-group">
-        <label for="fecha">Fecha Caducidad :</label>
-        <input placeholder="Formato(yyyy-mm-dd)" type="fecha" class="form-control" id="fecha" ng-model="data.fechaCaducicad">
-      </div>
-      
-             <div class="form-group">
-    <div ng-controller="BuscarProveedor">
-  <label for="singleSelect"> Proveedor </label><br>
-    <select name="singleSelect" ng-model="data.proveedorNombre">
-  	<option value="" default selected>Selecciona un proveedor</option>
-      <option ng-repeat="x in proveedor">{{x.proveedornombre}}</option>
-    </select>
-    </div>
-  </div> <!-- menu prov -->
     
     
-          <div class="form-group">
-    <div ng-controller="BuscarCategoria">
-  <label for="singleSelect"> Categoria </label><br>
-    <select name="singleSelect" ng-model="data.categoriaNombre">
-  	<option value="" default selected>Selecciona una categoria </option>
-      <option ng-repeat="x in categoria">{{x.categorianombre}}</option>
-    </select>
-    <label>{{x.categoriaId}}</label>
-    </div>
-  </div> <!-- menu categoria -->
-    
-    
-       <div class="form-group">
-    <div ng-controller="BuscarUnidadMedida">
-  <label for="singleSelect"> UnidadMedida </label><br>
-    <select name="singleSelect" ng-model="data.unidadmedidaNombre">
-  	<option value="" default selected>Selecciona una medida </option>
-      <option ng-repeat="x in unidadmedida">{{x.unidadmedidanombre}}</option>
-    </select>
-    </div>
-  </div> <!-- menu Unidad De Medida -->
-    
-
-
-
-			<div class="jumbotron text-center" >
-                <button  type="submit"  class="btn btn-primary" ng-click="add()" >Guardar</button>
-            </div>
-
     
 <!------------------------------------------------------------------------------------------------------------------------------>
 
-    
-  
-    
-    
-  </div>    
+        
+        
+ 
+
 </div><!--centro --> 
     
-    
+       </div>     <!--Controller --> 
     
     
 <div class = "col-sm-2"><!--der --> 
-<div ng-controller="Mensajes">
+
 <div class="container-fluid">
   <h1 style="text-align:center">Mensajes</h1>  
- 
-    <li ng-repeat="x in product">
-    <form>
-       <label >Quedan {{x.cantidad}} de {{x.productoNombre}}</label>
-      
-    </form>
-</li>
-  
-    
-    <!--  <textarea class="form-control" rows="15"  id="comment">  </textarea>-->
-   
-
-
-
-  
- <button type="submit" ng-click="look()" class="btn btn-default">Actualizar</button>
+    <textarea class="form-control" rows="15"  id="comment"></textarea>
+ <button type="submit" class="btn btn-default">Actualizar</button>
 </div> <!--Der -->     
- </div>   
- </div>
+    
+ 
 
-<div class = "row"></div>    
+<div class = "row"></div>
+    
+    
+
+    
 
     
 </div><!--body -->  
 </div><!-- General -->
   <script src="app.js"></script>   
 </body>
+
 </html>

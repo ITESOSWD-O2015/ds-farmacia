@@ -40,6 +40,7 @@ public class ProductsResource {
 			List<BeanProducto> list = ProductController.getController().getList(); // Se obtiene una lista con los productos de la BD
 			GenericEntity<List<BeanProducto>> entity = new GenericEntity<List<BeanProducto>>(list) {};
 			System.out.println(list);
+			
 			if(list.isEmpty()){// Si no hay ningun producto en la base de Datos manda un http response 204. (no content)
 				return Response.noContent().build();
 			}else{

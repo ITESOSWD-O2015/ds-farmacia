@@ -16,6 +16,7 @@ public class BeanProducto {
 	 private String unidadmedidanombre;
 	 private int unidadmedida;
 	 
+	 
 	public int getProductId() {
 		return productId;
 	}

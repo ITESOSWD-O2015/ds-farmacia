@@ -37,9 +37,11 @@
 	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    
 </head>
-          
+    
+    
+    
+    
 <body ng-app = "myApp">
     
 <div class="contenedor-fluid"> <!-- General -->
@@ -83,17 +85,17 @@
                     </li>
                     <li>
                         <a href="AgregarProducto.html">
-                            <span> <i class="fa fa-pencil-square-o"></i>  Actualizar Categoria</span>
+                            <span> <i class="fa fa-pencil-square-o"></i>  Actualizar Producto</span>
                         </a>
                     </li>
                     <li>
                         <a href="ActualizarProducto.html">
-                            <span> <i class="fa fa-stethoscope"></i>  Eliminar Categoria</span>
+                            <span> <i class="fa fa-stethoscope"></i>  Eliminar Producto</span>
                         </a>
                     </li>
                     <li>
                         <a href="EliminarProduct.html">
-                            <span> <i class="fa fa-ambulance"></i>  Desplegar Categoria</span>
+                            <span> <i class="fa fa-ambulance"></i>  Desplegar Producto</span>
                         </a>
                     </li>
                     
@@ -116,135 +118,77 @@
 
     
 <div class = "col-sm-8"> <!--centro --> 
-  <div ng-controller="AgregarProducto">
+    
+<!-------------------------------------------------------------------------Buscador ----------------------------------------->
 
-    
-
-<div class="contenedor-fluid"><!--  Formulario -->
-    
-     <div class="jumbotron text-center" style = "background: #00a2cc" >
-                            <h1>Hello Inventario !</h1>
-                        </div>
-    
-</div><!--  Formulario -->
-    
-<!------------------------------------------Campo Formulario----------------------------------------------------------------------------->
-    
-      <div class="form-group">
-        <label for="nombre">Nombre :</label>
-        <input type="nombre" class="form-control" id="nombre" ng-model="data.productoNombre">
-      </div>
-    
-      <div class="form-group">
-        <label for="unitario">Precio Unitario (MXN) :</label>
-        <input type="unitario" class="form-control" id="unitario" ng-model="data.precioUnitario">
-      </div>
-    
-      <div class="form-group">
-        <label for="venta">Precio De Venta (MXN) :</label>
-        <input type="venta" class="form-control" id="venta" ng-model="data.precioVenta">
-      </div>
+    <div class="jumbotron text-center" ><!- jumbotron -->
+        <h1>Hello Buscador !</h1>
+        
+          
+     </div><!- jumbotron -->
     
     
-      <div class="form-group">
-        <label>IVA (MXN) :</label>
-          <div class="input-group">
-                <input type="text" class="form-control" ng-model="data.iva">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button">Calcular</button>
-                    </span>
-          </div><!-- input-group -->
-      </div>
-
-    
-      <div class="form-group">
-        <label for="cantidad">Cantidad :</label>
-        <input type="cantidad" class="form-control" id="cantidad" ng-model="data.cantidad">
-      </div>
-    
-      <div class="form-group">
-        <label for="fecha">Fecha Caducidad :</label>
-        <input placeholder="Formato(yyyy-mm-dd)" type="fecha" class="form-control" id="fecha" ng-model="data.fechaCaducicad">
-      </div>
-      
-             <div class="form-group">
-    <div ng-controller="BuscarProveedor">
-  <label for="singleSelect"> Proveedor </label><br>
-    <select name="singleSelect" ng-model="data.proveedorNombre">
-  	<option value="" default selected>Selecciona un proveedor</option>
-      <option ng-repeat="x in proveedor">{{x.proveedornombre}}</option>
-    </select>
-    </div>
-  </div> <!-- menu prov -->
-    
-    
-          <div class="form-group">
-    <div ng-controller="BuscarCategoria">
-  <label for="singleSelect"> Categoria </label><br>
-    <select name="singleSelect" ng-model="data.categoriaNombre">
-  	<option value="" default selected>Selecciona una categoria </option>
-      <option ng-repeat="x in categoria">{{x.categorianombre}}</option>
-    </select>
-    <label>{{x.categoriaId}}</label>
-    </div>
-  </div> <!-- menu categoria -->
-    
-    
-       <div class="form-group">
-    <div ng-controller="BuscarUnidadMedida">
-  <label for="singleSelect"> UnidadMedida </label><br>
-    <select name="singleSelect" ng-model="data.unidadmedidaNombre">
-  	<option value="" default selected>Selecciona una medida </option>
-      <option ng-repeat="x in unidadmedida">{{x.unidadmedidanombre}}</option>
-    </select>
-    </div>
-  </div> <!-- menu Unidad De Medida -->
-    
-
-
-
-			<div class="jumbotron text-center" >
-                <button  type="submit"  class="btn btn-primary" ng-click="add()" >Guardar</button>
-            </div>
-
-    
+<!------------------------------------------------------------------------------------------------------------------------------>       
+<!-------------------------------------------------------------------------Tabla ----------------------------------------->
+        
+    <div ng-controller="BuscarProductos">  
+    <table class="table table-striped text-center">
+                                
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Item</th>
+        <th>Precio de Venta</th>
+        <th>Precio Unitario</th>
+        <th>Impuesto</th>
+        <th>Cantidad</th>
+        <th>Caducidad</th>
+        <th>Proveedor</th>
+        <th>Categoria</th>
+        <th>Unidad de Medida</th>
+        <th>Boton</th>
+      </tr>
+    </thead>
+    <tbody>
+    	
+      <tr ng-repeat= "x in products">
+        <td>{{x.productId}}</td>
+        <td>{{x.productoNombre}}</td>
+        <td>{{x.precioVenta}}</td>
+        <td>{{x.precioUnitario}}</td>
+        <td>{{x.iva}}</td>
+        <td>{{x.cantidad}}</td>
+        <td>{{x.fechaCaducicad}}</td>
+        <td>{{x.proveedorNombre}}</td>
+        <td>{{x.categoriaNombre}}</td>
+        <td>{{x.unidadmedidaNombre}}</td>
+        <td> <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-lock"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
 <!------------------------------------------------------------------------------------------------------------------------------>
 
-    
-  
-    
-    
-  </div>    
+</div>  
 </div><!--centro --> 
     
     
     
     
 <div class = "col-sm-2"><!--der --> 
-<div ng-controller="Mensajes">
+
 <div class="container-fluid">
   <h1 style="text-align:center">Mensajes</h1>  
- 
-    <li ng-repeat="x in product">
-    <form>
-       <label >Quedan {{x.cantidad}} de {{x.productoNombre}}</label>
-      
-    </form>
-</li>
-  
-    
-    <!--  <textarea class="form-control" rows="15"  id="comment">  </textarea>-->
-   
-
-
-
-  
- <button type="submit" ng-click="look()" class="btn btn-default">Actualizar</button>
+    <textarea class="form-control" rows="15"  id="comment"></textarea>
+ <button type="submit" class="btn btn-default">Actualizar</button>
 </div> <!--Der -->     
- </div>   
- </div>
+    
+ 
 
-<div class = "row"></div>    
+<div class = "row"></div>
+    
+    
+
+    
 
     
 </div><!--body -->  
