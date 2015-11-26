@@ -1,7 +1,7 @@
 package com.dsfarmacia.daos;
 
-import com.dsfarmacia.db.*;
-
+import com.dsfarmacia.db.Conexion;
+import com.dsfarmacia.db.IConexion;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,73 +9,74 @@ import java.sql.Statement;
 import java.util.Calendar;
 
 public class Login {
-	private IConexion Conexion;
-	private String username;
-	private String password;
-	private Statement stmt;
-	private ResultSet rs;
-	
-	public Login(){
-		setConexion(new Conexion());
-	}
-	
-	public String Connect(String username, String password) {
-		this.username = username;
-		this.password = password;
-		
-		String SQL = "SELECT * FROM Empleado where Nombre = '"
-				+ this.username + "' and Pass= '" + this.password + "'";
-		
-		
-		
-		try {
-			
-			
-			setStmt(getConexion().getCon().createStatement());
-			rs = getStmt().executeQuery(SQL);
-			if (!rs.isBeforeFirst())
-				return "Wrong username/password";
-			rs.next();
-			CloseConection();
-		//	System.out.println(rs.getString(1));	
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-			return "Connection Stablished";
-	}
-	
-	
-	public  IConexion getConexion() {
-		
-		return Conexion;
-	}
-	public  void CloseConection() throws SQLException {
-		Conexion.closeCon();
-	}
+  private IConexion conexion;
+  private String username;
+  private String password;
+  private Statement stmt;
+  private ResultSet result;
 
-	public void setConexion(IConexion Conexion) {
-		this.Conexion = Conexion;
-	}
+  public Login() {
+    setconection(new Conexion());
+  }
 
-	public Statement getStmt() {
-		return stmt;
-	}
+  /**.
+  * @param username user
+  * @param password user pass
+  * @return connected or not
+  */
+  public String connect(String username, String password) {
+    this.username = username;
+    this.password = password;
 
-	public void setStmt(Statement stmt) {
-		this.stmt = stmt;
-	}
+    String sql = "SELECT * FROM Empleado where Nombre = '"
+        + this.username + "' and Pass= '" + this.password + "'";
+    try {
+      setStmt(getConexion().getCon().createStatement());
+      result = getStmt().executeQuery(sql);
+      if (!result.isBeforeFirst()) {
+        return "Wrong username/password";
+      }
+      result.next();
+      closecon();
+      //System.out.println(rs.getString(1));
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
 
-	public ResultSet getRs() {
-		return rs;
-	}
+    return "Connection Stablished";
+  }
 
-	public void setRs(ResultSet rs) {
-		this.rs = rs;
-	}
-	public String getCurrentDate(){
-		return new java.sql.Date(Calendar.getInstance().getTime().getTime()).toString();
-	}
+  public  IConexion getConexion() {
+    return conexion;
+  }
+  
+  public  void closecon() throws SQLException {
+    conexion.closeCon();
+  }
+
+  public void setconection(IConexion con) {
+    this.conexion = con;
+  }
+
+  public Statement getStmt() {
+    return stmt;
+  }
+
+  public void setStmt(Statement stmt) {
+    this.stmt = stmt;
+  }
+
+  public ResultSet getRs() {
+    return result;
+  }
+
+  public void setRs(ResultSet rs) {
+    this.result = rs;
+  }
+  
+  public String getCurrentDate() {
+    return new java.sql.Date(Calendar.getInstance().getTime().getTime()).toString();
+  }
 
 }
