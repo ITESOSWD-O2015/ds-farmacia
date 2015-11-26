@@ -9,7 +9,7 @@
 <body>
 <%
 if(session.getAttribute( "Name" )==null)
-response.sendRedirect("Login.html"); %>
+response.sendRedirect("Loginini.jsp"); %>
 	
 </body>
 </html>
