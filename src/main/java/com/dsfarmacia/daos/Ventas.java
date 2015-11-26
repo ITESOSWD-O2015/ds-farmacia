@@ -1,81 +1,95 @@
 package com.dsfarmacia.daos;
 
+import com.dsfarmacia.db.Conexion;
+import com.dsfarmacia.db.IConexion;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import com.dsfarmacia.db.*;
+
 
 public class Ventas {
-	private IConexion Conexion;
-	private Statement stmt;
-	private ResultSet rs;
-	public Ventas() {
-		setConexion(new Conexion());
-	}
+  private IConexion conexion;
+  private Statement stmt;
+  private ResultSet result;
+  
+  public Ventas() {
+    setConexion(new Conexion());
+  }
 
-	public ResultSet Connect(int filter,int orderby, String input) {
-		String SQL = "SELECT * FROM Ticket as t,  TicketProducto as tp,Producto as p,Empleado as e where t.IDTicket=tp.IDProducto and t.IDEmpleado=e.IDEmpleado and  p.IDProducto=tp.IDProducto and ";
-		switch (filter) {
-		case 1:
-			SQL=SQL+"e.Nombre ='"+input+"'";
-			break;
-		case 2:
-			SQL=SQL+"p.Descripcion ='"+input+"'";
-			break;
-		}
-		switch (orderby) {
-		case 1:
-			SQL=SQL+" Order by Cantidad";
-			break;
-		case 2:
-			SQL=SQL+" Order by Precio";
-			break;
-		case 3:
-			SQL=SQL+" Order by Nombre";
-			break;
-		}
+  /**.
+  * @param filter data
+  * @param orderby data
+  * @param input data
+  * @return resultset
+  */
+  public ResultSet connect(int filter,int orderby, String input) {
+    String sql = "SELECT * FROM Ticket as t,  TicketProducto as tp,"
+        + "Producto as p,Empleado as e where t.IDTicket=tp.IDProducto and t.IDEmpleado="
+        + "e.IDEmpleado and  p.IDProducto=tp.IDProducto and ";
+    switch (filter) {
+      case 1:
+        sql = sql + "e.Nombre ='" + input + "'";
+        break;
+      case 2:
+        sql = sql + "p.Descripcion ='" + input + "'";
+        break;
+      default:
+        sql = sql + "";
+        break;
+    }
+    switch (orderby) {
+      case 1:
+        sql = sql + " Order by Cantidad";
+        break;
+      case 2:
+        sql = sql + " Order by Precio";
+        break;
+      case 3:
+        sql = sql + " Order by Nombre";
+        break;
+      default:
+        sql = sql + "";
+        break;
+    }
 
-		try {
-			setStmt(getConexion().getCon().createStatement());
-			setRs(getStmt().executeQuery(SQL));
+    try {
+      setStmt(getConexion().getCon().createStatement());
+      setRs(getStmt().executeQuery(sql));
+      // System.out.println(rs.getString(1));
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    return result;
+  }
 
-		
+  public IConexion getConexion() {
+    return conexion;
+  }
 
-			// System.out.println(rs.getString(1));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+  public void setConexion(IConexion conexion) {
+    this.conexion = conexion;
+  }
 
-		return rs;
-	}
+  public Statement getStmt() {
+    return stmt;
+  }
 
-	public IConexion getConexion() {
-		return Conexion;
-	}
+  public void setStmt(Statement stmt) {
+    this.stmt = stmt;
+  }
 
-	public void setConexion(IConexion conexion) {
-		Conexion = conexion;
-	}
+  public ResultSet getRs() {
+    return result;
+  }
 
-	public Statement getStmt() {
-		return stmt;
-	}
+  public void setRs(ResultSet rs) {
+    this.result = rs;
+  }
 
-	public void setStmt(Statement stmt) {
-		this.stmt = stmt;
-	}
-
-	public ResultSet getRs() {
-		return rs;
-	}
-
-	public void setRs(ResultSet rs) {
-		this.rs = rs;
-	}
-
-	public void CloseConection() throws SQLException {
-		Conexion.closeCon();
-	}
+  public void closeconection() throws SQLException {
+    conexion.closeCon();
+  }
 
 }

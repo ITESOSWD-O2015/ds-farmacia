@@ -1,5 +1,8 @@
 package com.dsfarmacia.daos;
 
+import com.dsfarmacia.beans.BeanProducto;
+import com.dsfarmacia.db.Conexion;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dsfarmacia.*;
-import com.dsfarmacia.beans.BeanProducto;
-import com.dsfarmacia.db.Conexion;
+
 
 public class ProductoDao {
 	
