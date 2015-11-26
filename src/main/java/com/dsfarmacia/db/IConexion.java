@@ -7,7 +7,6 @@ public interface IConexion {
 
 	public boolean crearConexion();
 	public boolean cerrarConexion();
-	public void crearConexion2();
 	
 	public void setCon(Connection con);
 	public Connection getCon();
