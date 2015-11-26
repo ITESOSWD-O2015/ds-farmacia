@@ -17,6 +17,10 @@ public class UnidadMedidaDao {
   private Statement statement = null;
   private ResultSet resultSet = null;
 
+  /**.
+  * @param id id to delete 
+  * @return data
+  */
   public boolean delete(String id) {
     PreparedStatement ps;
     try {
