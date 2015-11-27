@@ -47,16 +47,16 @@ public class Login {
         return "Wrong username/password";
       }
       result.next();
-      category=result.getString(5);
-      active=result.getString(6);
+      category = result.getString(5);
+      active = result.getString(6);
       closecon();
       //System.out.println(rs.getString(1));
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    if(active.contains("0")){
-    	return "User not active ";
+    if (active.contains("0")) {
+      return "User not active ";
     }
     return "Connection Stablished";
   }
