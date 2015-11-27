@@ -26,7 +26,7 @@ response.sendRedirect("Welcome.html"); %>
    <%String pass= request.getParameter("Password");%>
 </p></li>
 </ul>
-	<%String salida=p.Connect(user, pass);
+	<%String salida=p.connect(user, pass);
 	%>
 	<%=salida %>
 	<a href="Login.html.jsp">Try again?</a>

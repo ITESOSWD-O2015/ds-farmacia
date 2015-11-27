@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%= session.getAttribute( "Name" ) %>
+	<%= session.getAttribute("Name") %>
 	<%
 	Logout p = new Logout();
 				
@@ -18,6 +18,5 @@
 	response.sendRedirect(redirectURL);
 		
 	%>
-	<%= prueba %>
 </body>
 </html>
