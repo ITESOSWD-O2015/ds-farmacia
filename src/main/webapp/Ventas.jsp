@@ -35,7 +35,7 @@ Input: <input type="text" name="input">
 		
 		Ventas v1 = new Ventas();
 		ResultSet resultset;
-		resultset = v1.Connect(filter,orderby,input);
+		resultset = v1.connect(filter,orderby,input);
 		while (resultset.next()) {
 	%>
 	
@@ -57,7 +57,7 @@ Input: <input type="text" name="input">
 	<%
 
 		}
-		v1.CloseConection();
+		v1.closeconection();
 	%>
 </body>
 </html>

@@ -13,15 +13,15 @@
 <table>
 <tr>
 <td>iD:</td>
-<td><input type="text" size="20" name="id" value="<%= bproducto.getiD()%>"></td>
+<td><input type="text" size="20" name="id" value="<%= bproducto.getProductId()%>"></td>
 </tr>
 <tr>
 <td>Descripcion:</td>
-<td><input type="text" size="20" name="descripcion" value="<%= bproducto.getDescripcion()%>"></td>
+<td><input type="text" size="20" name="descripcion" value="<%= bproducto.getProductoNombre()%>"></td>
 </tr>
 <tr>
 <td>Precio:</td>
-<td><input type="text" size="20" name="precio" value="<%= bproducto.getPrecio() %>"></td>
+<td><input type="text" size="20" name="precio" value="<%= bproducto.getPrecioVenta() %>"></td>
 </tr>
 <tr>
 <td>Cantidad:</td>
@@ -33,7 +33,7 @@
 </tr>
 <tr>
 <td>Fecha de caducidad:</td>
-<td><input type="text" size="20" name="caducidad" value="<%= bproducto.getCaducidad() %>"></td>
+<td><input type="text" size="20" name="caducidad" value="<%= bproducto.getFechaCaducicad() %>"></td>
 </tr>
 </table>
 </div>

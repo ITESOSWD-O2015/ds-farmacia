@@ -15,7 +15,7 @@
 	%>
 <%
 if(session.getAttribute( "Name" )!=null)
-response.sendRedirect("Welcome.html"); %>
+response.sendRedirect("Welcome.jsp"); %>
 	<ul>
 <li><p><b>First Name:</b>
    <%String user= request.getParameter("Username");%>
@@ -24,13 +24,14 @@ response.sendRedirect("Welcome.html"); %>
    <%String pass= request.getParameter("Password");%>
 </p></li>
 </ul>
-	<%String salida=p.Connect(user, pass);
+	<%String salida=p.connect(user, pass);
 	%>
 	<%=salida %>
-	<a href="Login.html.jsp">Try again?</a>
+	<a href="Loginini.jsp">Try again?</a>
 <%
    String name = request.getParameter( "Username" );
    session.setAttribute( "Name", name );
+   session.setAttribute( "Category", p.getcategory());
    session.setAttribute( "lastDate", p.getCurrentDate());
    String redirectURL = "Welcome.jsp";
    if(salida.contains("Connection Stablished"))

@@ -8,7 +8,8 @@
 </head>
 <body>
 <%@include file="Checklogin.jsp" %>
-Hello, <%= session.getAttribute( "Name" ) %>
+Hello, <%= session.getAttribute( "Name" ) %> <%=session.getAttribute("Category") %>
+
 <a href="Logout.jsp">Logout</a>
 <a href="Ventasini.jsp">Buscar Ventas</a>
 </body>

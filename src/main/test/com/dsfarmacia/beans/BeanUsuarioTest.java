@@ -13,7 +13,7 @@ import static org.mockito.Mockito.*;
 
 public class BeanUsuarioTest {
 	
-	 BeanProducto bean;
+	/* BeanProducto bean;
 	 private String iD, descripcion, precio, cantidad, iva, caducidad;
 	 
 	 @Before
@@ -114,5 +114,5 @@ public class BeanUsuarioTest {
 			caducidad = bean.getCaducidad();
 			assertEquals(caducidad, "2011-04-04");
 		 }
-
+*/
 }

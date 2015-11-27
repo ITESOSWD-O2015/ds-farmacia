@@ -14,7 +14,11 @@ public class Login {
   private String password;
   private Statement stmt;
   private ResultSet result;
-
+  private String category;
+  
+  public String getcategory(){
+	  return category;
+  }
   public Login() {
     setconection(new Conexion());
   }
@@ -37,6 +41,7 @@ public class Login {
         return "Wrong username/password";
       }
       result.next();
+      category=result.getString(5);
       closecon();
       //System.out.println(rs.getString(1));
     } catch (SQLException e) {
