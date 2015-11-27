@@ -13,7 +13,6 @@
 <a href="Logout.jsp">Logout</a>
 <a href="pass.html">forgot your password?</a>
 <form action="Ventas.jsp" method="POST">
-
 <br />
 Orderby
 <input type="radio" name="orderby" value=1 checked="checked" >Total<br>

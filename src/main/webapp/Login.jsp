@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="com.dsfarmacia.daos.Login"%>
+<%@ page import="com.dsfarmacia.daos.SingletonLogin"%>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,7 +11,7 @@
 </head>
 <body>
 	<%
-		Login p = new Login(); 
+	SingletonLogin.getInstance();
 	%>
 <%
 if(session.getAttribute( "Name" )!=null)
@@ -24,15 +24,15 @@ response.sendRedirect("Welcome.jsp"); %>
    <%String pass= request.getParameter("Password");%>
 </p></li>
 </ul>
-	<%String salida=p.connect(user, pass);
+	<%String salida=SingletonLogin.getInstance().connect(user, pass);
 	%>
 	<%=salida %>
 	<a href="Loginini.jsp">Try again?</a>
 <%
    String name = request.getParameter( "Username" );
    session.setAttribute( "Name", name );
-   session.setAttribute( "Category", p.getcategory() );
-   session.setAttribute( "lastDate", p.getCurrentDate());
+   session.setAttribute( "Category", SingletonLogin.getInstance().getcategory() );
+   session.setAttribute( "lastDate", SingletonLogin.getInstance().getCurrentDate());
    String redirectURL = "Welcome.jsp";
    if(salida.contains("Connection Stablished")){
 	   response.sendRedirect(redirectURL); 

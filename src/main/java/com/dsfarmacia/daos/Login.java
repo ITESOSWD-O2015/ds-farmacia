@@ -1,6 +1,5 @@
 package com.dsfarmacia.daos;
 
-import com.dsfarmacia.db.Conexion;
 import com.dsfarmacia.db.IConexion;
 
 import java.sql.ResultSet;
@@ -25,9 +24,7 @@ public class Login {
     return category;
   }
   
-  public Login() {
-    setconection(new Conexion());
-  }
+
 
   /**.
   * @param username user
