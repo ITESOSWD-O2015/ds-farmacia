@@ -15,6 +15,11 @@ public class Login {
   private Statement stmt;
   private ResultSet result;
   private String category;
+  private String active;
+  
+  public String getactive(){
+	  return active;
+  }
   
   public String getcategory(){
 	  return category;
@@ -42,13 +47,16 @@ public class Login {
       }
       result.next();
       category=result.getString(5);
+      active=result.getString(6);
       closecon();
       //System.out.println(rs.getString(1));
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-
+    if(active.contains("0")){
+    	return "User not active ";
+    }
     return "Connection Stablished";
   }
 

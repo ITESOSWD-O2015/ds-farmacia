@@ -31,11 +31,15 @@ response.sendRedirect("Welcome.jsp"); %>
 <%
    String name = request.getParameter( "Username" );
    session.setAttribute( "Name", name );
-   session.setAttribute( "Category", p.getcategory());
+   session.setAttribute( "Category", p.getcategory() );
    session.setAttribute( "lastDate", p.getCurrentDate());
    String redirectURL = "Welcome.jsp";
-   if(salida.contains("Connection Stablished"))
-   response.sendRedirect(redirectURL);
+   if(salida.contains("Connection Stablished")){
+	   response.sendRedirect(redirectURL); 
+   }
+   else{
+	   session.invalidate();
+   }
 %>
 
 </body>
