@@ -16,12 +16,12 @@
 
 <br />
 Orderby
-<input type="radio" name="orderby" value=1>Total<br>
+<input type="radio" name="orderby" value=1 checked="checked" >Total<br>
 <input type="radio" name="orderby" value=2> Date<br>
 <input type="radio" name="orderby" value=3> Medicine<br>
 <br />
 Filter
-<input type="radio" name="filter" value=1> User<br>
+<input type="radio" name="filter" value=1 checked="checked" > User<br>
 <input type="radio" name="filter" value=2> Medicine<br>
 <br />
 Input: <input type="text" name="input">

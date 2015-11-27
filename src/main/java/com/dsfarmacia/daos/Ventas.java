@@ -25,7 +25,7 @@ public class Ventas {
   */
   public ResultSet connect(int filter,int orderby, String input) {
     String sql = "SELECT * FROM Ticket as t,  TicketProducto as tp,"
-        + "Producto as p,Empleado as e where t.IDTicket=tp.IDProducto and t.IDEmpleado="
+        + "Producto as p,Empleado as e where t.IDTicket=tp.IDTicket and t.IDEmpleado="
         + "e.IDEmpleado and  p.IDProducto=tp.IDProducto and ";
     switch (filter) {
       case 1:
