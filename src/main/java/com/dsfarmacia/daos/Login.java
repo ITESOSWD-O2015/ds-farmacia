@@ -17,13 +17,14 @@ public class Login {
   private String category;
   private String active;
   
-  public String getactive(){
-	  return active;
+  public String getactive() {
+    return active;
   }
   
-  public String getcategory(){
-	  return category;
+  public String getcategory() {
+    return category;
   }
+  
   public Login() {
     setconection(new Conexion());
   }
