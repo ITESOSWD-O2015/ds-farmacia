@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Actualizar producto</title>     
+        
+   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+       <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+   <!-- Bootstrap -->
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   <!--[if lt IE 9]>
+     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+   <![endif]-->
+   
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+<script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+    
+    
+    
+    
+<body ng-app = "myApp">
+    
+<div class="contenedor-fluid"> <!-- General -->
+      
+<!-- BARRA MENU ----------------------------------------------------------------------------------------------------->
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Farmacias Vallarta</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="CategAgregar2.0.html">Categoria</a></li>
+        <li><a href="InvAgregar2.0.html">Inventario</a></li> 
+        <li><a href="ProvAgregar2.0.html">Proveedor</a></li> 
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<!------------------------------------------------------------------------------------------------------------------->
+
+      
+<div class= "row"><!--body -->  
+
+    
+<!----------Barra Lateral-------------------------------------------------------------------------------------------->  
+<div class = "col-sm-2"><!--izq -->
+<div id="wrapper"><!--wrapper --> 
+
+       <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+                <ul class="sidebar-nav nav">
+                    <li>  
+                        <a href="InvAgregar2.0.html">
+                            <span> <i class="fa fa-bar-chart"></i>  Agregar Producto</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="InvActualizar2.0.html">
+                            <span> <i class="fa fa-pencil-square-o"></i>  Actualizar Producto</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="InvEliminar2.0.html">
+                            <span> <i class="fa fa-stethoscope"></i>  Eliminar Producto</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="InvBuscador2.0.html">
+                            <span> <i class="fa fa-ambulance"></i>  Buscar Producto</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Consultas.html">
+                            <span> <i class="fa fa-newspaper-o"></i>  Consultas</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+</div> <!--wrapper -->        
+</div> <!--izq -->  
+<!------------------------------------------------------------------------------------------------------------------->
+        
+
+    
+<div class = "col-sm-8"> <!--centro --> 
+<div ng-controller = "BuscarAct">
+    
+<!-------------------------------------------------------------------------Buscador ----------------------------------------->
+    <div class="jumbotron text-center" ><!- jumbotron -->
+        <h1>Hello Actualizador !</h1>
+        
+        <form class="form-inline"><!-- inline -->                
+            <div class="form-group"><!-- form group -->
+                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                        <input type="text" class="form-control" id="exampleInputAmount" ng-model="product.productId" 	placeholder="Nombre o ID ?">
+                </div>
+            </div><!-- form group -->
+                                
+                <button type="submit" class="btn btn-primary" ng-click="look()">Buscar</button>                 
+        </form><!-- inline -->   
+     </div><!- jumbotron -->
+        
+        
+
+<!------------------------------------------------------------------------------------------------------------------------------>
+<!--------------------------------------------------------Formulario Actualizar------------------------------------------------->
+    <div ng-controller = "ActualizarController">
+    <form role="form">
+
+<div class="form-group">
+    <label style="height:30px; line-height:30px; text-align:center;" for="name" class="form-control">ID a modificar : {{data.productId}}</label>
+ 
+  </div>
+   
+     <div class="form-group">
+        <label for="nombre">Nombre :</label>
+        <input type="nombre" class="form-control" id="nombre" ng-model="data.productoNombre">
+      </div>
+    
+      <div class="form-group">
+        <label for="unitario">Precio Unitario (MXN) :</label>
+        <input type="unitario" class="form-control" id="unitario" ng-model="data.precioUnitario">
+      </div>
+    
+      <div class="form-group">
+        <label for="venta">Precio De Venta (MXN) :</label>
+        <input type="venta" class="form-control" id="venta" ng-model="data.precioVenta">
+      </div>
+    
+    
+      <div class="form-group">
+        <label>IVA (MXN) :</label>
+          <div class="input-group">
+                <input type="text" class="form-control" ng-model="data.iva">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" ng-click=calculate()>Calcular</button>
+                    </span>
+          </div><!-- input-group -->
+      </div>
+   
+    
+
+ <div class="form-group">
+        <label for="cantidad">Cantidad :</label>
+        <input type="cantidad" class="form-control" id="cantidad" ng-model="data.cantidad">
+      </div>
+    
+      <div class="form-group">
+        <label for="fecha">Fecha Caducidad :</label>
+        <input placeholder="Formato(yyyy-mm-dd)" type="fecha" class="form-control" id="fecha" ng-model="data.fechaCaducicad">
+      </div>
+  
+            <div class="form-group">
+    <div ng-controller="BuscarProveedor">
+  <label for="singleSelect"> Proveedor </label><br>
+    <select name="singleSelect" ng-model="data.proveedorNombre">
+  	<option value="" default selected>Selecciona un proveedor</option>
+      <option ng-repeat="x in proveedor">{{x.proveedornombre}}</option>
+    </select>
+    </div>
+  </div> <!-- menu prov -->
+    
+    
+          <div class="form-group">
+    <div ng-controller="BuscarCategoria">
+  <label for="singleSelect"> Categoria </label><br>
+    <select name="singleSelect" ng-model="data.categoriaNombre">
+  	<option value="" default selected>Selecciona una categoria </option>
+      <option ng-repeat="x in categoria">{{x.categorianombre}}</option>
+    </select>
+    <label>{{x.categoriaId}}</label>
+    </div>
+  </div> <!-- menu categoria -->
+    
+    
+       <div class="form-group">
+    <div ng-controller="BuscarUnidadMedida">
+  <label for="singleSelect"> UnidadMedida </label><br>
+    <select name="singleSelect" ng-model="data.unidadmedidaNombre">
+  	<option value="" default selected>Selecciona una medida </option>
+      <option ng-repeat="x in unidadmedida">{{x.unidadmedidanombre}}</option>
+    </select>
+    </div>
+  </div> <!-- menu Unidad De Medida -->
+    
+<!------------------------------------------------------------------------------------------------------------------------------>
+<!-----------------------------------------------------------------------Botones ----------------------------------------------->
+
+    <div class=" text-center" style = "margin-top: 2em"><!--botones-->
+        <button type="button" class="btn btn-success" ng-click="agregar()">Aceptar</button> 
+        <button type="button" class="btn btn-danger">Cancelar</button>
+    </div><!--botones-->
+<!------------------------------------------------------------------------------------------------------------------------------>
+
+        
+        
+   </div>     
+</div>
+</div><!--centro --> 
+    
+    
+    
+    
+<div class = "col-sm-2"><!--der --> 
+
+<!------------------Mensajes----------------------------------------------------------------------------------->
+
+<div class="container-fluid">
+  <h1 style="text-align:center">Mensajes</h1>  
+    <textarea class="form-control" rows="15"  id="comment"></textarea>
+ <button type="submit" class="btn btn-default">Actualizar</button>
+</div> <!--Der -->     
+    
+<!------------------------------------------------------------------------------------------------------------------->
+
+ 
+
+<div class = "row"></div>
+    
+    
+
+    
+
+<script src="app.js"></script>
+</div><!--body -->  
+</div><!-- General -->
+</body>

@@ -1,6 +1,7 @@
 package com.dsfarmacia.beans;
 
 public class BeanProducto {
+
   private int productId;
   private String productonombre;
   private double preciounitario;
@@ -127,4 +128,5 @@ public class BeanProducto {
        + " proveedorNombre=" + proveedornombre + ", categoriaNombre=" + categorianombre + ","
        + " unidadmedidaNombre=" + unidadmedidanombre + "]";
   }  
+
 }

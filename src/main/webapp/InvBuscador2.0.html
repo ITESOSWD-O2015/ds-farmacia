@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Buscar producto</title>     
+        
+   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+       <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+   <!-- Bootstrap -->
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   <!--[if lt IE 9]>
+     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+   <![endif]-->
+   
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+<script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+    
+    
+    
+    
+<body ng-app = "myApp">
+    
+<div class="contenedor-fluid"> <!-- General -->
+      
+<!-- BARRA MENU ----------------------------------------------------------------------------------------------------->
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Farmacias Vallarta</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="CategAgregar2.0.html">Categoria</a></li>
+        <li><a href="InvAgregar2.0.html">Inventario</a></li> 
+        <li><a href="ProvAgregar2.0.html">Proveedor</a></li> 
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<!------------------------------------------------------------------------------------------------------------------->
+
+      
+<div class= "row"><!--body -->  
+
+    
+<!----------Barra Lateral-------------------------------------------------------------------------------------------->  
+<div class = "col-sm-2"><!--izq -->
+<div id="wrapper"><!--wrapper --> 
+
+       <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+                <ul class="sidebar-nav nav">
+                    <li>  
+                        <a href="InvAgregar2.0.html">
+                            <span> <i class="fa fa-bar-chart"></i>  Agregar Producto</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="InvActualizar2.0.html">
+                            <span> <i class="fa fa-pencil-square-o"></i>  Actualizar Producto</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="InvEliminar2.0.html">
+                            <span> <i class="fa fa-stethoscope"></i>  Eliminar Producto</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="InvBuscador2.0.html">
+                            <span> <i class="fa fa-ambulance"></i>  Buscar Producto</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Consultas.html">
+                            <span> <i class="fa fa-newspaper-o"></i>  Consultas</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+</div> <!--wrapper -->        
+</div> <!--izq -->  
+<!------------------------------------------------------------------------------------------------------------------->
+        
+
+    
+<div class = "col-sm-8"> <!--centro --> 
+    <div ng-controller="BuscarID">
+
+<!-------------------------------------------------------------------------Buscador ----------------------------------------->
+    <div class="jumbotron text-center" ><!- jumbotron -->
+        <h1>Hello Buscador !</h1>
+        
+            <form class="form-inline"><!-- inline -->                
+            <div class="form-group"><!-- form group -->
+                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                        <input type="text" class="form-control" id="exampleInputAmount" ng-model="product" placeholder="Nombre o ID ?">
+                </div>
+            </div><!-- form group -->
+                                
+                <button type="submit" class="btn btn-primary" ng-click="look()">Buscar</button>  
+                <button type="button" class="btn btn-success" ng-click="all()">Desplegar</button>
+        </form><!-- inline -->   
+        
+   
+     </div><!- jumbotron -->
+        
+        
+<!------------------------------------------------------------------------------------------------------------------------------>
+<!-------------------------------------------------------------------------Tabla ----------------------------------------------->
+        
+    <table class="table table-striped">
+                                
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio Venta</th>
+        <th>Impuesto</th>
+        <th>Cantidad</th>
+        <th>Fecha Caducidad</th>
+        <th>Proveedor</th>
+         <th>Categoria</th>
+         <th>Unidad Medida</th>
+      </tr>
+    </thead>
+    
+       <tbody>
+      <tr >
+        <td>{{data.productId}}</td>
+         <td>{{data.productoNombre}}</td>
+        <td>{{data.precioVenta}}</td>
+        <td>{{data.iva}}</td>
+        <td>{{data.cantidad}}</td>
+        <td>{{data.fechaCaducicad}}</td>
+        <td>{{data.proveedorNombre}}</td>
+        <td>{{data.categoriaNombre}}</td>
+         <td>{{data.unidadmedidaNombre}}</td>
+      </tr>
+ 
+ 
+
+      <tr ng-repeat="x in products">
+        <td>{{x.productId}}</td>
+         <td>{{x.productoNombre}}</td>
+        <td>{{x.precioVenta}}</td>
+        <td>{{x.iva}}</td>
+        <td>{{x.cantidad}}</td>
+        <td>{{x.fechaCaducicad}}</td>
+        <td>{{x.proveedorNombre}}</td>
+        <td>{{x.categoriaNombre}}</td>
+         <td>{{x.unidadmedidaNombre}}</td>
+      </tr>
+ 
+    </tbody>
+  </table>
+<!------------------------------------------------------------------------------------------------------------------------------>
+
+
+        
+        
+  </div>    <!--Controller -->    
+ 
+</div><!--centro --> 
+    
+    
+    
+    
+<div class = "col-sm-2"><!--der --> 
+
+<!------------------Mensajes----------------------------------------------------------------------------------->
+
+<div class="container-fluid">
+  <h1 style="text-align:center">Mensajes</h1>  
+    <textarea class="form-control" rows="15"  id="comment"></textarea>
+ <button type="submit" class="btn btn-default">Actualizar</button>
+</div> <!--Der -->     
+    
+<!------------------------------------------------------------------------------------------------------------------->
+
+ 
+
+<div class = "row"></div>
+    
+    
+
+    
+
+<script src="app.js"></script>
+</div><!--body -->  
+</div><!-- General -->
+</body>

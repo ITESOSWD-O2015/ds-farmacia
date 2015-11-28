@@ -7,6 +7,8 @@ import com.dsfarmacia.db.Conexion;
 public class SingletonLogin extends Login{
   private static Login uniqueInstance;
   
+  private int test;
+  
   private SingletonLogin() {
     setconection(new Conexion());
   }
