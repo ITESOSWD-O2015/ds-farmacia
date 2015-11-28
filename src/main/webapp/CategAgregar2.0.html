@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Eliminar Producto</title>     
+<title>Agregar categoria</title>     
         
    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -78,23 +78,23 @@
         <div id="sidebar-wrapper">
                 <ul class="sidebar-nav nav">
                     <li>  
-                        <a href="InvAgregar2.0.html">
-                            <span> <i class="fa fa-bar-chart"></i>  Agregar Producto</span>
+                        <a href="CategAgregar2.0.html">
+                            <span> <i class="fa fa-bar-chart"></i>  Agregar Categoria</span>
                         </a>
                     </li>
                     <li>
-                        <a href="InvActualizar2.0.html">
-                            <span> <i class="fa fa-pencil-square-o"></i>  Actualizar Producto</span>
+                        <a href="CategActualizar2.0.html">
+                            <span> <i class="fa fa-pencil-square-o"></i>  Actualizar Categoria</span>
                         </a>
                     </li>
                     <li>
-                        <a href="InvEliminar2.0.html">
-                            <span> <i class="fa fa-stethoscope"></i>  Eliminar Producto</span>
+                        <a href="CategEliminar2.0.html">
+                            <span> <i class="fa fa-stethoscope"></i>  Eliminar Categoria</span>
                         </a>
                     </li>
                     <li>
-                        <a href="InvBuscador2.0.html">
-                            <span> <i class="fa fa-ambulance"></i>  Buscar Producto</span>
+                        <a href="CategBuscar2.0.html">
+                            <span> <i class="fa fa-ambulance"></i>  Buscar Categoria</span>
                         </a>
                     </li>
                     <li>
@@ -112,94 +112,44 @@
 
     
 <div class = "col-sm-8"> <!--centro --> 
-
-<div ng-controller = "BuscarAct">
     
 <!-------------------------------------------------------------------------Buscador ----------------------------------------->
-    <div class="jumbotron text-center" style = "margin-bottom: 3em" ><!- jumbotron -->
-        <h1>Hello Eliminador !</h1>
+    <div class="jumbotron text-center" ><!- jumbotron -->
+        <h1>Hello Categoria !</h1>
         
-            <form class="form-inline"><!-- inline -->                
-            <div class="form-group"><!-- form group -->
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                        <input type="text" class="form-control" id="exampleInputAmount" ng-model="producto"placeholder="Nombre o Id ?">
-                </div>
-            </div><!-- form group -->
-                                
-                <button type="submit" class="btn btn-primary" ng-click="look()">Seek And Destroy</button>  
-        </form><!-- inline -->   
-        
-   
+ 
      </div><!- jumbotron -->
         
         
 
 <!------------------------------------------------------------------------------------------------------------------------------>
-<!-------------------------------------------------------------------------Tabla ----------------------------------------------->
-        
-    <div ng-controller="EliminarController">
-    <div class="row">
-        <div class ="col-xs-12">
-            <div class=" text-center"  style = "margin-bottom: 4em"><!--botones-->
+<!--------------------------------------------------------Formulario Actualizar------------------------------------------------->
+    
+    <form role="form">
 
-                <table class="table table-striped">
-                                
-                
-                                
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Precio Venta</th>
-        <th>Impuesto</th>
-        <th>Cantidad</th>
-        <th>Fecha Caducidad</th>
-        <th>Proveedor</th>
-         <th>Categoria</th>
-         <th>Unidad Medida</th>
-      </tr>
-    </thead>
     
-       <tbody>
-      <tr >
-        <td>{{data.productId}}</td>
-         <td>{{data.productoNombre}}</td>
-        <td>{{data.precioVenta}}</td>
-        <td>{{data.iva}}</td>
-        <td>{{data.cantidad}}</td>
-        <td>{{data.fechaCaducicad}}</td>
-        <td>{{data.proveedorNombre}}</td>
-        <td>{{data.categoriaNombre}}</td>
-         <td>{{data.unidadmedidaNombre}}</td>
-      </tr>
- 
-                    </tbody>
-                </table>
-            </div>
+  <div class="form-group">
+    <label for="name"> Nombre de categoria:</label>
+    <input type="name" class="form-control" id="name" ng-model="resultado.nombre">
+  </div>
     
-                            </div>
-                       </div>
-                       
-                      
+
+  <div class="form-group">
+    <label for="comment">Comentarios :</label>
+    <textarea class="form-control" rows="5" id="comment"></textarea>
+  </div>
+    
+
 <!------------------------------------------------------------------------------------------------------------------------------>
-<!------------------------------------------------------------Botones Aceptar/Cancelar ----------------------------------------->
-    <div class=" text-center"><!--etiqueta-->
-        <h3>Deseas tomar la vida del articulo?</h3>
+<!-----------------------------------------------------------------------Botones ----------------------------------------------->
 
-    </div><!--etiqueta-->
-    <div><h1></h1></div>
-    
-    <div class=" text-center" ><!--botones-->
-        <button type="button" class="btn btn-success" ng-click="eliminar()">Si, Kill 'Em All !</button> 
-        <button type="button" class="btn btn-danger">No, Siempre No</button>
+    <div class=" text-center" style = "margin-top: 3em"><!--botones-->
+        <button type="button" class="btn btn-success">Aceptar</button> 
+        <button type="button" class="btn btn-danger">Cancelar</button>
     </div><!--botones-->
-
 <!------------------------------------------------------------------------------------------------------------------------------>
 
- </div><!--Eliminar Controller-->
- </div><!--Controller Buscar Act-->      
+        
         
         
 

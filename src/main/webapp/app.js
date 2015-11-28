@@ -158,7 +158,7 @@ app.controller('AgregarProducto', function($scope, $http){
 app.controller('Mensajes', function($scope, $http){
 	console.log('No entre'); 
 
-	$scope.look = function(){
+//	$scope.look = function(){
 		console.log('Si entre a buscar la cantidad menores o iguales a 4');  //Verificar que se haya ejecutando el click de agregar
 
 		$http.get("http://localhost:8080/FarmaciaJava/api/mensaje")
@@ -168,7 +168,7 @@ app.controller('Mensajes', function($scope, $http){
 		.error(function(){
 			alert("Surgio un error"); //En caso de que fallara algo, muestra mensaje de error.
 		});
-	} // Se cierra la funcion de add
+	//} // Se cierra la funcion de add
 
 });
 
@@ -182,8 +182,9 @@ app.controller('EliminarController', function($scope, $http){
 
 
 //		Preguntar porque no se ejecutan los mensajes del delete y el .delete porque marca error
-		$http['delete']("http://localhost:8080/FarmaciaJava/api/products/"+$scope.resultado.productId)
+		$http['delete']("http://localhost:8080/FarmaciaJava/api/products/"+$scope.data.productId)
 		.success(function() {
+			
 			alert("Se elimino el producto exitosamente"); //En caso de que sea exitosa la ejeccucion, muestra mensaje de exito.
 		})
 		.error(function(){
@@ -260,7 +261,7 @@ app.controller('BuscarAct', function($scope, $http){
 	
 	console.log('Entre al boton calcular'); 
 	
-	$scope.test.iva = $scope.test.precioVenta * 0.15;
+	$scope.data.iva = $scope.data.precioVenta * 0.15;
 }
 	
 $scope.look = function(){

@@ -332,7 +332,17 @@
 ​
 <div class="container-fluid">
   <h1 style="text-align:center">Mensajes</h1>  
-    <textarea class="form-control" rows="15"  id="comment" ng-model="mensajes"></textarea>
+  <div ng-controller="Mensajes">
+   
+    
+        <li ng-repeat="x in product">
+    <form>
+       <label >Quedan {{x.cantidad}} de {{x.productoNombre}}</label>
+      
+    </form>
+</li>
+  </div>
+    
  <button type="submit" class="btn btn-default">Actualizar</button>
 </div> <!--Der -->     
     
