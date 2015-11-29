@@ -46,7 +46,7 @@ public class Ventas {
         sql = sql + " Order by Precio";
         break;
       case 3:
-        sql = sql + " Order by Nombre";
+        sql = sql + " Order by User";
         break;
       default:
         sql = sql + "";
