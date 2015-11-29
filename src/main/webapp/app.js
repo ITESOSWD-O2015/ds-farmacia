@@ -114,7 +114,7 @@ app.controller('BuscarIDController', function($scope, $http){
 					$scope.array.push(response);
 					$scope.resultado.push(response);
 					
-					$scope.dinerito.subtotal += response.precioVenta * $scope.dinerito.cantidad;
+					$scope.dinerito.subtotal += response.precioVenta;
 					$scope.temp.precio += response.precioVenta 
 					$scope.dinerito.iva += response.iva;
 					$scope.temp.iva += response.iva;
@@ -156,7 +156,7 @@ app.controller('BuscarIDController', function($scope, $http){
 		 var person_to_delete = $scope.resultado[id];
 		 $scope.dinerito.subtotal = $scope.dinerito.subtotal - person_to_delete.precioVenta;
 		 $scope.dinerito.iva = $scope.dinerito.iva - person_to_delete.iva;
-		 $scope.dinerito.total = $scope.dinerito.total - person_to_delete.total;
+		 $scope.dinerito.total = $scope.dinerito.total - (person_to_delete.iva + person_to_delete.precioVenta);
 		  $scope.resultado.splice(id, 1);	
 		  
 		
@@ -217,13 +217,18 @@ app.controller('Factura', function($scope, $http){
 		$scope.cash = function(t){
 			
 			console.log(t);
-			console.log(id);
-			console.log(cant);
 			
+//			$http.post("http://localhost:8080/FarmaciaJava/api/facturas/", t)
+//			.success(function() {
+//				alert("Se actualizo el producto"); //En caso de que sea exitosa la ejeccucion, muestra mensaje de exito.
+//			})
+//			.error(function(){
+//				alert("Se elimino el producto exitosamente"); //En caso de que fallara algo, muestra mensaje de error.
+//			});	
+
 			$http({
 		        url: "http://localhost:8080/FarmaciaJava/api/facturas",
 		        method: "POST",
-		        contentType: "application/json",
 		        data:  t
 		    })
 		    .then(function(response) {
@@ -243,7 +248,7 @@ app.controller('Factura', function($scope, $http){
 			console.log(x);
 			console.log(x.length);
 			console.log(id);
-			
+			id = id +1;
 			var fact = [{factID: 0, producto:0, precio:0, cantidad:0, total:0}];
 			
 			
@@ -255,8 +260,8 @@ app.controller('Factura', function($scope, $http){
 				        "ticketId" : id,
 				        "productId"  : x[i].productId,
 				        "precioventa": x[i].precioVenta ,
-				        "cantidad" : x[i].cantidad,
-				        "total" : x[i].precioVenta * x[i].cantidad
+				        "cantidad" : 1,
+				        "total" : x[i].precioVenta 
 				    });
 			}
 			

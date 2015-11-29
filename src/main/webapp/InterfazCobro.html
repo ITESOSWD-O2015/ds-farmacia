@@ -147,7 +147,6 @@
           <thead>
             <tr>
                 <th>Producto</th>
-                <th>Piezas</th>
                 <th>Costo</th>
                 <th>Cancelar</th>
             </tr>
@@ -156,8 +155,7 @@
           <tbody>
             <tr ng-repeat="r in resultado">
            <td>{{r.productoNombre}}</td>
-        <td><input type="text"  placeholder="cantidad" ng-model="r.cantidad"></td>
-        <td>{{r.precioVenta}}</td>
+        	<td>{{r.precioVenta}}</td>
 
         <td> <button type="button" class="btn btn-primary btn-xs" ng-click="delet($index)">X</button></td>
          </tr>
@@ -168,9 +166,7 @@
     </div>       <!--Tabla ventas -->  
     <!-- -------------------------------------------------------------------------------------------------------------------------->
 		
-		<span ng-repeat="x in resultado">{{x.productoNombre}}</span>
-		<button type="button" class="btn btn-primary btn-xs" ng-click="test(resultado, factura.facturaId)">Mandar</button>
-
+		
   
     <!-- CUADROS: FORMA DE PAGO/TOTAL /CAMBIO------------------------------------------------------------------------------------->  
         
@@ -211,9 +207,10 @@
                         <div class="row">
                             <div class ="col-xs-12">
                                 <div class=" text-center"  style = "margin-top: 1em"><!--botones-->
-                                <label>{{resultado.productoNombre}}</label>
-                                    <button  type="button" class="btn btn-success" ng-click="cash(dinerito, facturaId, c)">Cobrar</button>
-                                    <button type="button" class="btn btn-danger">Cancelar</button>
+                             
+                                    <button  type="button" class="btn btn-success" ng-click="cash(dinerito)">Cobrar</button>
+                                    <button type="button" class="btn btn-danger" ng-click="test(resultado, factura.facturaId)">Aceptar</button>
+                                    
                                </div>
                             </div>
                        </div>

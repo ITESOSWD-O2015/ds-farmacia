@@ -1,6 +1,7 @@
 package com.dsfarmacia.beans;
 
 public class BeanFactura {
+	
 	private int facturaId;
 	private String fecha;
 	private double subtotal;
@@ -8,6 +9,7 @@ public class BeanFactura {
 	private double total;
 	private int pagoId;
 	private String spago;
+	private int cantidad;
 	
 	public int getFacturaId() {
 		return facturaId;
@@ -50,6 +52,12 @@ public class BeanFactura {
 	}
 	public void setSpago(String spago) {
 		this.spago = spago;
+	}
+	public int getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 }
