@@ -35,8 +35,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
         
 ​
 ​
@@ -116,8 +115,11 @@
 <div class = "col-sm-8"> <!--centro --> 
     
     <div ng-controller="BuscarIDController">
+      <input class="form-control" type="text" id="idfact" ng-model="factura.facturaId" readonly> 
      <form class="form-inline text-center">                       
         <div class="form-group">
+        
+        	
             <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
             
             <div class="input-group">
@@ -136,8 +138,9 @@
                                 
                                
 </form>
-    
-    
+
+
+<div ng-controller ="Factura">
 <!-- TABLA ---------------------------------------------------------------------------------------------------------->    
     <div class = "row" style = "margin-bottom:10%"><!--Tabla ventas , controller-->  
       <table class="table table-striped">
@@ -152,20 +155,23 @@
           
           <tbody>
             <tr ng-repeat="r in resultado">
-        <td>{{r.productoNombre}}</td>
-        <td>    <input type="text"   placeholder="cantidad" ng-model="test"></td>
+           <td>{{r.productoNombre}}</td>
+        <td><input type="text"  placeholder="cantidad" ng-model="r.cantidad"></td>
         <td>{{r.precioVenta}}</td>
-        
-      
+
         <td> <button type="button" class="btn btn-primary btn-xs" ng-click="delet($index)">X</button></td>
-            </tr>
-            
+         </tr>
+       
+           
           </tbody>
       </table>
     </div>       <!--Tabla ventas -->  
     <!-- -------------------------------------------------------------------------------------------------------------------------->
-​
-    
+		
+		<span ng-repeat="x in resultado">{{x.productoNombre}}</span>
+		<button type="button" class="btn btn-primary btn-xs" ng-click="test(resultado, factura.facturaId)">Mandar</button>
+
+  
     <!-- CUADROS: FORMA DE PAGO/TOTAL /CAMBIO------------------------------------------------------------------------------------->  
         
         
@@ -205,7 +211,8 @@
                         <div class="row">
                             <div class ="col-xs-12">
                                 <div class=" text-center"  style = "margin-top: 1em"><!--botones-->
-                                    <button type="button " class="btn btn-success">Cobrar</button>
+                                <label>{{resultado.productoNombre}}</label>
+                                    <button  type="button" class="btn btn-success" ng-click="cash(dinerito, facturaId, c)">Cobrar</button>
                                     <button type="button" class="btn btn-danger">Cancelar</button>
                                </div>
                             </div>
@@ -220,9 +227,7 @@
         
         
         
-        
-        
-    
+     
         
         
         
@@ -237,15 +242,17 @@
                    <div class="panel-body"> 
                        <div class ="col-md-6"><!-- Lado derecho -->
                            
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Efectivo</label>
-                            </div>
-                       
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Tarjeta</label>
-                           </div>
-                       
-                          
+                           
+                                
+								<div ng-controller="BuscarPago">
+								  <label for="singleSelect"> Tipo de Pago </label><br>
+								    <select name="singleSelect" ng-model="dinerito.spago">
+								  	<option value="" default selected>Selecciona un tipo de pago </option>
+								      <option ng-repeat="x in pay">{{x.pagoNombre}}</option>
+								    </select>
+								    </div>
+								
+                      
                            
                        
                            <div class="row"><!--Barra Pago-->
@@ -317,15 +324,15 @@
             </div><!--Froma De Pago -->        
 ​
         
-        
+       
                 <div class=" col-md-4"></div> <!--Espacio a la derecha-->
 ​
-    
+  
     </div><!--CUADROS -->  
 <!-- -------------------------------------------------------------------------------------------------------------------->
-​
-    
-   </div> 
+  </div>
+      </div>   
+
 </div><!--centro --> 
     
 <div class = "col-sm-2"><!--der --> 
@@ -335,9 +342,9 @@
   <div ng-controller="Mensajes">
    
     
-        <li ng-repeat="x in product">
+        <li ng-repeat="p in product">
     <form>
-       <label >Quedan {{x.cantidad}} de {{x.productoNombre}}</label>
+       <label >Quedan {{p.cantidad}} de {{p.productoNombre}}</label>
       
     </form>
 </li>

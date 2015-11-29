@@ -85,7 +85,6 @@ public class ProductsResource {
 		System.out.println(bean);
 		return bean;
   }
-
   
 @Path("/{id}") //El metodo entra aqui si encuentra en la url un ID
 public ProductResource getProduct(@PathParam("id") String id) {

@@ -2,6 +2,8 @@
 var app = angular.module('myApp', []);
 
 //Este es el controlador que muestra todos los productos de la Base de Datos
+var sara = [];
+
 
 app.controller('BuscarProductos', function($scope,$http){
 	
@@ -18,6 +20,8 @@ app.controller('BuscarProductos', function($scope,$http){
 }); // Se cierra el controlador de BuscarProductos
 
 
+
+
 app.controller('BuscarProveedor', function($scope,$http){
 
 	$http.get("http://localhost:8080/FarmaciaJava/api/proveedores/")
@@ -29,6 +33,18 @@ app.controller('BuscarProveedor', function($scope,$http){
 	});
 
 }); // Se cierra el controlador de BuscarProveedor
+
+
+app.controller('BuscarPago', function($scope, $http){
+	
+	$http.get("http://localhost:8080/FarmaciaJava/api/pagos/")
+	.success(function(response) {$scope.pay = response;
+	
+	})
+	.error(function(){
+		alert("Error"); //En caso de que fallara algo, muestra mensaje de error.
+	});		
+});
 
 
 app.controller('BuscarUnidadMedida', function($scope,$http){
@@ -61,8 +77,21 @@ app.controller('BuscarIDController', function($scope, $http){
 	$scope.resultado = [];
 	$scope.dinerito = {subtotal: 0, iva: 0, total: 0};
 	$scope.monto = {cambio : 0, monto : 0};
+	
+	
+	$http.get("http://localhost:8080/FarmaciaJava/api/facturas/")
+	.success(function(response) {$scope.factura = response; //En caso de que sea exitosa la ejeccucion, los datos se muestran en una tabla
+			console.log($scope.factura);
+	})
+	.error(function(){
+		alert("Surgio un error"); //En caso de que fallara algo, muestra mensaje de error.
+	});
+	
+	
 	$scope.buscar = function(){
 		console.log('Si entre a buscar el id');  //Verificar que se haya ejecutando el click de buscar
+		
+		
 
 		$http.get("http://localhost:8080/FarmaciaJava/api/products/"+$scope.product)
 		.success(function(response) {
@@ -73,7 +102,7 @@ app.controller('BuscarIDController', function($scope, $http){
 					window.open('http://localhost:8080/FarmaciaJava/CategoriaDetalle.html','Receta','width=600,height=600', 'scrollbars=NO');
 					}
 				
-
+					sara.push(response);
 					$scope.resultado.push(response);
 					$scope.dinerito.subtotal += response.precioVenta;
 					$scope.dinerito.iva += response.iva;
@@ -82,7 +111,7 @@ app.controller('BuscarIDController', function($scope, $http){
 					
 					$scope.monto.cambio = $scope.dinerito.total - $scope.monto.total 
 					
-				
+					console.log(sara[0]);
 	
 				
 			}
@@ -90,14 +119,6 @@ app.controller('BuscarIDController', function($scope, $http){
 				if(!($scope.resultado))
 					alert("No se encontro el producto"); 
 			}
-		
-			
-			
-			
-			
-			
-			
-
 
 
 		})
@@ -171,6 +192,69 @@ app.controller('Mensajes', function($scope, $http){
 	//} // Se cierra la funcion de add
 
 });
+
+app.controller('Factura', function($scope, $http){
+	
+	
+		$scope.cash = function(t, id, cant){
+			
+			console.log(t);
+			console.log(id);
+			console.log(cant);
+			
+//			$http({
+//		        url: "http://localhost:8080/FarmaciaJava/api/facturas",
+//		        method: "POST",
+//		        contentType: "application/json",
+//		        data:  t
+//		    })
+//		    .then(function(response) {
+//		            // success
+//		    }, 
+//		    function(response) { // optional
+//		            // failed
+//		    });
+//			
+		}
+		
+	
+       $scope.test = function(x, id){
+		console.log('Si entre a Factura Detalle');  //Verificar que se haya ejecutando el click de agregar
+		
+		
+			console.log(x);
+			console.log(x.length);
+			console.log(id);
+			
+			var factura = x[0].productId;
+			
+			console.log(factura);
+			
+			for(var i=0;i<x.length;i++){
+				
+		
+				 $http({
+				        url: "http://localhost:8080/FarmaciaJava/api/facturad",
+				        method: "POST",
+				        contentType: "application/json",
+				        data: x [i]
+				    })
+				    .then(function(response) {
+				            // success
+				    }, 
+				    function(response) { // optional
+				            // failed
+				    });
+			}
+			
+			console.log('Sali');
+			 
+			 
+	} // Se cierra la funcion de test
+
+});
+
+
 
 
 //Este el controlador que elimina un producto de la base de datos
