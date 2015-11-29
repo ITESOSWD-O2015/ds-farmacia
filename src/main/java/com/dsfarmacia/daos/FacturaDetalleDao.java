@@ -27,11 +27,10 @@ public class FacturaDetalleDao {
 		      // Statements allow to issue SQL queries to the database
 		      ps = connect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		      
-		     
-		      
+		     		      
 		      ps.setInt(1, bean.getTicketId());
-		      ps.setInt(2, bean.getProductoId());
-		      ps.setDouble(3, bean.getPrecio());
+		      ps.setInt(2, bean.getProductId());
+		      ps.setDouble(3, bean.getPrecioventa());
 		      ps.setInt(4, bean.getCantidad());
 		      ps.setDouble(5, bean.getTotal());
 		 

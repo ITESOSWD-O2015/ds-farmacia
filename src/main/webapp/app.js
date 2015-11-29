@@ -72,11 +72,21 @@ app.controller('BuscarCategoria', function($scope,$http){
 
 
 //Este es el controlador que buscar un producto en especifico de la Base de Datos
-
+var array = [];
 app.controller('BuscarIDController', function($scope, $http){
 	$scope.resultado = [];
-	$scope.dinerito = {subtotal: 0, iva: 0, total: 0};
+	$scope.dinerito = {subtotal: 0, iva: 0, total: 0, cantidad:0};
 	$scope.monto = {cambio : 0, monto : 0};
+	$scope.array = [];
+	$scope.temp = {precio:0, iva:0};
+	
+	
+	
+	
+	console.log($scope.dinerito.subtotal)
+	
+	
+
 	
 	
 	$http.get("http://localhost:8080/FarmaciaJava/api/facturas/")
@@ -91,7 +101,6 @@ app.controller('BuscarIDController', function($scope, $http){
 	$scope.buscar = function(){
 		console.log('Si entre a buscar el id');  //Verificar que se haya ejecutando el click de buscar
 		
-		
 
 		$http.get("http://localhost:8080/FarmaciaJava/api/products/"+$scope.product)
 		.success(function(response) {
@@ -102,16 +111,23 @@ app.controller('BuscarIDController', function($scope, $http){
 					window.open('http://localhost:8080/FarmaciaJava/CategoriaDetalle.html','Receta','width=600,height=600', 'scrollbars=NO');
 					}
 				
-					sara.push(response);
+					$scope.array.push(response);
 					$scope.resultado.push(response);
-					$scope.dinerito.subtotal += response.precioVenta;
+					
+					$scope.dinerito.subtotal += response.precioVenta * $scope.dinerito.cantidad;
+					$scope.temp.precio += response.precioVenta 
 					$scope.dinerito.iva += response.iva;
-					$scope.dinerito.total += response.precioVenta + response.iva;
+					$scope.temp.iva += response.iva;
+					$scope.dinerito.total = $scope.dinerito.subtotal + $scope.dinerito.iva;
+					
 					console.log(JSON.stringify($scope.resultado));
+					
 					
 					$scope.monto.cambio = $scope.dinerito.total - $scope.monto.total 
 					
-					console.log(sara[0]);
+					console.log($scope.temp.precio);
+					
+				
 	
 				
 			}
@@ -139,6 +155,8 @@ app.controller('BuscarIDController', function($scope, $http){
 	$scope.delet = function(id){
 		 var person_to_delete = $scope.resultado[id];
 		 $scope.dinerito.subtotal = $scope.dinerito.subtotal - person_to_delete.precioVenta;
+		 $scope.dinerito.iva = $scope.dinerito.iva - person_to_delete.iva;
+		 $scope.dinerito.total = $scope.dinerito.total - person_to_delete.total;
 		  $scope.resultado.splice(id, 1);	
 		  
 		
@@ -196,40 +214,58 @@ app.controller('Mensajes', function($scope, $http){
 app.controller('Factura', function($scope, $http){
 	
 	
-		$scope.cash = function(t, id, cant){
+		$scope.cash = function(t){
 			
 			console.log(t);
 			console.log(id);
 			console.log(cant);
 			
-//			$http({
-//		        url: "http://localhost:8080/FarmaciaJava/api/facturas",
-//		        method: "POST",
-//		        contentType: "application/json",
-//		        data:  t
-//		    })
-//		    .then(function(response) {
-//		            // success
-//		    }, 
-//		    function(response) { // optional
-//		            // failed
-//		    });
-//			
+			$http({
+		        url: "http://localhost:8080/FarmaciaJava/api/facturas",
+		        method: "POST",
+		        contentType: "application/json",
+		        data:  t
+		    })
+		    .then(function(response) {
+		            // success
+		    }, 
+		    function(response) { // optional
+		            // failed
+		    });
+			
 		}
 		
 	
        $scope.test = function(x, id){
 		console.log('Si entre a Factura Detalle');  //Verificar que se haya ejecutando el click de agregar
-		
+			
 		
 			console.log(x);
 			console.log(x.length);
 			console.log(id);
 			
-			var factura = x[0].productId;
+			var fact = [{factID: 0, producto:0, precio:0, cantidad:0, total:0}];
 			
-			console.log(factura);
 			
+			var json = {factura: []};
+			
+			for(var i=0;i<x.length;i++){
+			
+				  json.factura.push({ 
+				        "ticketId" : id,
+				        "productId"  : x[i].productId,
+				        "precioventa": x[i].precioVenta ,
+				        "cantidad" : x[i].cantidad,
+				        "total" : x[i].precioVenta * x[i].cantidad
+				    });
+			}
+			
+			for(var i=0;i<x.length;i++){
+				
+				console.log(json.factura[i]);
+			}
+			
+	
 			for(var i=0;i<x.length;i++){
 				
 		
@@ -237,7 +273,7 @@ app.controller('Factura', function($scope, $http){
 				        url: "http://localhost:8080/FarmaciaJava/api/facturad",
 				        method: "POST",
 				        contentType: "application/json",
-				        data: x [i]
+				        data: json.factura[i]
 				    })
 				    .then(function(response) {
 				            // success
@@ -305,8 +341,7 @@ app.controller('ActualizarController', function($scope, $http){
 
 
 app.controller('BuscarID', function($scope, $http){
-	
-	
+
 		
 	$scope.look = function(){
 		console.log('Si entre a buscar');  //Verificar que se haya ejecutando el click de actualizar
