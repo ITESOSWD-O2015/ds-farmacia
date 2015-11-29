@@ -35,8 +35,8 @@ public class Login {
     this.username = username;
     this.password = password;
 
-    String sql = "SELECT * FROM Empleado where Nombre = '"
-        + this.username + "' and Pass= '" + this.password + "'";
+    String sql = "SELECT * FROM Empleado where [User] = '"
+        + this.username + "' and password= '" + this.password + "'";
     try {
       setStmt(getConexion().getCon().createStatement());
       result = getStmt().executeQuery(sql);
