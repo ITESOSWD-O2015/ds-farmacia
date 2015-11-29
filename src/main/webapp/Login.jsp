@@ -29,8 +29,8 @@ response.sendRedirect("Welcome.jsp"); %>
 	<%=salida %>
 	<a href="Loginini.jsp">Try again?</a>
 <%
-   String name = request.getParameter( "Username" );
-   session.setAttribute( "Name", name );
+   String name = request.getParameter( "User" );
+   session.setAttribute( "Name", user );
    session.setAttribute( "Category", SingletonLogin.getInstance().getcategory() );
    session.setAttribute( "lastDate", SingletonLogin.getInstance().getCurrentDate());
    String redirectURL = "Welcome.jsp";

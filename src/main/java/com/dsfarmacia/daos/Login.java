@@ -40,18 +40,20 @@ public class Login {
     try {
       setStmt(getConexion().getCon().createStatement());
       result = getStmt().executeQuery(sql);
-      if (!result.isBeforeFirst()) {
-        return "Wrong username/password";
+      if (result.wasNull()) {
+        return "Wrong username/password "+sql;
       }
       result.next();
-      category = result.getString(5);
-      active = result.getString(6);
+      category = result.getString(result.findColumn("Category"));
+      active = result.getString(result.findColumn("password"));
+      System.out.println("asdasd"+category+result.getArray(2));
       closecon();
       //System.out.println(rs.getString(1));
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+    
     if (active.contains("0")) {
       return "User not active ";
     }
