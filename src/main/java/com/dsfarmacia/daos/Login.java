@@ -15,11 +15,15 @@ public class Login {
   private ResultSet result;
   private String category;
   private String active;
+  private String iduser;
   
   public String getactive() {
     return active;
   }
-  
+  public String getiduser() {
+	    return iduser;
+  }
+	  
   public String getcategory() {
     return category;
   }
@@ -34,19 +38,22 @@ public class Login {
   public String connect(String username, String password) {
     this.username = username;
     this.password = password;
-
+    category="";
+    active="";
     String sql = "SELECT * FROM Empleado where [User] = '"
         + this.username + "' and password= '" + this.password + "'";
     try {
       setStmt(getConexion().getCon().createStatement());
       result = getStmt().executeQuery(sql);
-      if (result.wasNull()) {
-        return "Wrong username/password "+sql;
+      boolean val = result.next();
+      if (!val) {
+        return "Wrong username/password ";
       }
-      result.next();
+      
+    //  result.next();
+      iduser= result.getString(result.findColumn("ID"));
       category = result.getString(result.findColumn("Category"));
       active = result.getString(result.findColumn("password"));
-      System.out.println("asdasd"+category+result.getArray(2));
       closecon();
       //System.out.println(rs.getString(1));
     } catch (SQLException e) {

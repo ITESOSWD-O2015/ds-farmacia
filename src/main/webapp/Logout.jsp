@@ -12,7 +12,7 @@
 	<%
 	Logout p = new Logout();
 				
-	boolean prueba= p.connect(session.getAttribute("Name").toString(), session.getAttribute("lastDate").toString());
+	boolean prueba= p.connect(session.getAttribute("ID").toString(), session.getAttribute("lastDate").toString());
 	String redirectURL = "Loginini.jsp";
 	session.invalidate();
 	response.sendRedirect(redirectURL);

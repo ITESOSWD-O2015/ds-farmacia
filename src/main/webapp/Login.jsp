@@ -31,6 +31,7 @@ response.sendRedirect("Welcome.jsp"); %>
 <%
    String name = request.getParameter( "User" );
    session.setAttribute( "Name", user );
+   session.setAttribute( "ID", SingletonLogin.getInstance().getiduser() );
    session.setAttribute( "Category", SingletonLogin.getInstance().getcategory() );
    session.setAttribute( "lastDate", SingletonLogin.getInstance().getCurrentDate());
    String redirectURL = "Welcome.jsp";
