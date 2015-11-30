@@ -4,33 +4,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.dsfarmacia.db.Conexion;
 import com.dsfarmacia.db.IConexion;
 
 public class UpdateUserC implements UpdateUser {
-	
+
 	private Statement stmt;
 	private IConexion conexion;
 	private ResultSet result;
 
-	public boolean updateactivation(int id, int active) {
-		String sql = "UPDATE  Empleado set Active ='" + active + "' where [User] = '" + id + "'";
+	public UpdateUserC() {
+		setConexion(new Conexion());
+	}
+
+	public boolean updateactivation(String id, String active) {
+		String sql = "UPDATE  Empleado set Active ='" + active + "' where ID = '" + id + "'";
+		boolean salida=false;
 		try {
 			setStmt(getConexion().getCon().createStatement());
-			setRs(getStmt().executeQuery(sql));
+			salida = getStmt().execute(sql);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		return true;
+		return salida;
 	}
 
 	public ResultSet GetUsers() {
 		String sql = "Select * from Empleado";
-
 		try {
 			setStmt(getConexion().getCon().createStatement());
 			setRs(getStmt().executeQuery(sql));
-			setStmt(getConexion().getCon().createStatement());
 			// System.out.println(rs.getString(1));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -39,17 +43,18 @@ public class UpdateUserC implements UpdateUser {
 		return result;
 	}
 
-	public boolean updateCategory(int id, int Category) {
-		String sql = "UPDATE  Empleado set Category ='" + Category + "' where [User] = '" + id + "'";
+	public boolean updateCategory(String id, String Category) {
+		String sql = "UPDATE  Empleado set Category ='" + Category + "' where ID = '" + id + "'";
+		boolean salida=false;
 		try {
 			setStmt(getConexion().getCon().createStatement());
-			setRs(getStmt().executeQuery(sql));
-			// System.out.println(rs.getString(1));
-		} catch (SQLException e) {
+			salida = getStmt().execute(sql);
+		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
-		return true;
+		System.out.println(sql);
+		return salida;
 	}
 
 	public IConexion getConexion() {
@@ -80,4 +85,7 @@ public class UpdateUserC implements UpdateUser {
 		this.result = rs;
 	}
 
+	public void setConexion(IConexion conexion) {
+		this.conexion = conexion;
+	}
 }

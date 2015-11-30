@@ -45,11 +45,11 @@ Input: <input type="text" name="input">
 		</TR>
 		<TR>
 			<TD><%=resultset.getString("IDTicket")%></TD>
-			<TD><%=resultset.getString("Descripcion")%></TD>
-			<TD><%=resultset.getString("Precion")%></TD>
-			<TD><%=resultset.getString("Precio")%></TD>
-			<TD><%=resultset.getString("Importe")%></TD>
-			<TD><%=resultset.getString("Nombre")%></TD>
+            <TD><%=resultset.getString("Fecha")%></TD>
+            <TD><%=resultset.getString("IVA")%></TD>
+            <TD><%=resultset.getString("Subtotal")%></TD>
+            <TD><%=resultset.getString("Total")%></TD>
+            <TD><%=resultset.getString("Nombre")%></TD>
 			
 		</TR>
 	</TABLE>

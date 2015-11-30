@@ -1,7 +1,7 @@
 package com.dsfarmacia.daos;
 
 public interface UpdateUser {
-	public boolean updateactivation(int id,int active);
+	public boolean updateactivation(String id,String active);
 	
-	public boolean updateCategory (int id,int active) ;
+	public boolean updateCategory (String id,String active) ;
 }
