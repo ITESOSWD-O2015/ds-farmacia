@@ -14,7 +14,7 @@
 <%
 UpdateUserC user1=new UpdateUserC();
 ResultSet resultset;
-resultset = user1.GetUsers();
+resultset = user1.getusers();
 while (resultset.next()) {
 %>
 <TABLE BORDER="1">

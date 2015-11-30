@@ -10,7 +10,7 @@
 <body>
 <%
 UpdateUserC user1=new UpdateUserC();
-user1.updateCategory(request.getParameter( "ID" ).toString(), request.getParameter( "category" ).toString());
+user1.updatecategory(request.getParameter( "ID" ).toString(), request.getParameter( "category" ).toString());
 user1.updateactivation(request.getParameter( "ID" ).toString(), request.getParameter( "active" ).toString());
 response.sendRedirect("UpdateUser.jsp");
 %>
