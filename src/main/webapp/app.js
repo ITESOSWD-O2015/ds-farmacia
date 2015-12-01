@@ -4,6 +4,37 @@ var app = angular.module('myApp', []);
 //Este es el controlador que muestra todos los productos de la Base de Datos
 var sara = [];
 
+app.controller('Receta', function($scope,$http){
+	
+	$scope.go = function(x){
+		
+		console.log(x)
+	$http.post("http://localhost:8080/FarmaciaJava/api/recetas/",x)
+	.success(function(response) {
+		$scope.products = response;  //En caso de que sea exitosa la ejeccucion, los datos se muestran en una tabla
+		window.close();
+		
+	})
+	.error(function(){
+		alert("Surgio un error"); //En caso de que fallara algo, muestra mensaje de error.
+	});
+	}
+}); // Se cierra el controlador de BuscarProductos
+
+
+app.controller('BuscarProductos2', function($scope,$http){
+	
+	
+	$http.get("http://localhost:8080/FarmaciaJava/api/products/")
+	.success(function(response) {
+		$scope.products = response;  //En caso de que sea exitosa la ejeccucion, los datos se muestran en una tabla
+		
+	})
+	.error(function(){
+		alert("Surgio un error"); //En caso de que fallara algo, muestra mensaje de error.
+	});
+	
+});
 
 app.controller('BuscarProductos', function($scope,$http){
 	
@@ -108,7 +139,7 @@ app.controller('BuscarIDController', function($scope, $http){
 				
 				
 				if(response.categoriaNombre == "Antibiotico"){
-					window.open('http://localhost:8080/FarmaciaJava/CategoriaDetalle.html','Receta','width=600,height=600', 'scrollbars=NO');
+					window.open('http://localhost:8080/FarmaciaJava/FormReceta.html','Receta','width=600,height=600', 'scrollbars=NO');
 					}
 				
 					$scope.array.push(response);
@@ -213,8 +244,8 @@ app.controller('Mensajes', function($scope, $http){
 
 app.controller('Factura', function($scope, $http){
 	
-	
-		$scope.cash = function(t){
+		
+		$scope.cash = function(t,x,id){
 			
 			console.log(t);
 			
@@ -238,10 +269,10 @@ app.controller('Factura', function($scope, $http){
 		            // failed
 		    });
 			
-		}
+		
 		
 	
-       $scope.test = function(x, id){
+    
 		console.log('Si entre a Factura Detalle');  //Verificar que se haya ejecutando el click de agregar
 			
 		
@@ -281,13 +312,19 @@ app.controller('Factura', function($scope, $http){
 				        data: json.factura[i]
 				    })
 				    .then(function(response) {
-				            // success
+				    	
+				          	
 				    }, 
 				    function(response) { // optional
 				            // failed
 				    });
 			}
 			
+			$scope.resultado = null;
+			$scope.dinerito = null;
+			
+			alert("Se registro la venta"); //En caso de que fallara algo, muestra mensaje de error.
+		
 			console.log('Sali');
 			 
 			 

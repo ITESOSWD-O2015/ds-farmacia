@@ -48,7 +48,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Farmacias Vallarta</a>
+      <a class="navbar-brand" href="InterfazCobro.html">Farmacias Vallarta</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
@@ -103,7 +103,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+         
         </div>
 </div> <!--wrapper -->        
 </div> <!--izq -->  
@@ -112,9 +112,10 @@
 
     
 <div class = "col-sm-8"> <!--centro --> 
-    
+    <div ng-controller ="BuscarCategoriaID">
+    	<div ng-controller ="BuscarCategorias">
 <!-------------------------------------------------------------------------Buscador ----------------------------------------->
-    <div class="jumbotron text-center" ><!- jumbotron -->
+    <div class="jumbotron text-center" >
         <h1>Hello Buscador !</h1>
         
         <form class="form-inline"><!-- inline -->                
@@ -122,15 +123,15 @@
                 <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Nombre o Id ?">
+                        <input type="text" class="form-control" id="exampleInputAmount" ng-model="categoria" placeholder="Nombre o Id ?">
                 </div>
             </div><!-- form group -->
                                 
-                <button type="submit" class="btn btn-primary">Buscar</button> 
-                <button type="button" class="btn btn-success">Desplegar</button>
+                <button type="submit" class="btn btn-primary" ng-click="look(categoria)">Buscar</button> 
+                <button type="button" class="btn btn-success" ng-click ="all()">Desplegar</button>
 
         </form><!-- inline -->   
-     </div><!- jumbotron -->
+     </div>
         
         
 
@@ -144,22 +145,26 @@
       <tr>
         <th>ID</th>
         <th>Nombre</th>
-        <th>Descripcion</th>
+        
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>24544711</td>
-        <td>China</td>
-        <td>bla bla bla bla hello bye bye</td>
-      </tr>
+        <td>{{data.categoriaId}}</td>
+        <td>{{data.categorianombre}}</td>
+              </tr>
+              
+              <tr ng-repeat = "x in products">
+        <td>{{x.categoriaId}}</td>
+        <td>{{x.categorianombre}}</td>
+              </tr>
  
     </tbody>
   </table>
 <!------------------------------------------------------------------------------------------------------------------------------>
         
-        
-        
+        </div>
+       </div>  
 
 </div><!--centro --> 
     
@@ -178,7 +183,7 @@
     
 <!------------------------------------------------------------------------------------------------------------------->
 
- 
+
 
 <div class = "row"></div>
     
@@ -186,7 +191,8 @@
 
     
 
-<script src="app.js"></script>
+<script src="appCategoria.js"></script>
 </div><!--body -->  
 </div><!-- General -->
+</div>
 </body>

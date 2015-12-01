@@ -48,7 +48,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Farmacias Vallarta</a>
+      <a class="navbar-brand" href="InterfazCobro.html">Farmacias Vallarta</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
@@ -112,23 +112,25 @@
 
     
 <div class = "col-sm-8"> <!--centro --> 
-    
+       <div ng-controller ="BuscarCategoriaID">
+       		<div ng-controller="ActualizarController">
 <!-------------------------------------------------------------------------Buscador ----------------------------------------->
-    <div class="jumbotron text-center" ><!- jumbotron -->
+    <div class="jumbotron text-center" >
         <h1>Hello Actualizador !</h1>
         
+  
         <form class="form-inline"><!-- inline -->                
             <div class="form-group"><!-- form group -->
                 <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Nombre o Id ?">
+                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Nombre o Id ?" ng-model="categoria">
                 </div>
             </div><!-- form group -->
                                 
-                <button type="submit" class="btn btn-primary">Buscar</button>                 
+                <button type="submit" class="btn btn-primary" ng-click="look(categoria)">Buscar</button>                 
         </form><!-- inline -->   
-     </div><!- jumbotron -->
+     </div>
         
         
 
@@ -139,19 +141,15 @@
 
   <div class="form-group">
     <label for="id"> Id:</label>
-    <label style="height:30px; line-height:30px; " for="name" class="form-control">Id a modificar : {{resultado.productId}}</label>
+    <label style="height:30px; line-height:30px; " for="name" class="form-control">Id a modificar : {{data.categoriaId}}</label>
   </div>
     
   <div class="form-group">
     <label for="name"> Nombre de categoria:</label>
-    <input type="name" class="form-control" id="name" ng-model="resultado.nombre">
+    <input type="name" class="form-control" id="name" ng-model="data.categorianombre">
   </div>
     
 
-  <div class="form-group">
-    <label for="comment">Comentarios :</label>
-    <textarea class="form-control" rows="5" id="comment"></textarea>
-  </div>
         
     </form>
     
@@ -160,14 +158,13 @@
 <!-----------------------------------------------------------------------Botones ----------------------------------------------->
 
     <div class=" text-center" style = "margin-top: 4em"><!--botones-->
-        <button type="button" class="btn btn-success">Aceptar</button> 
+        <button type="button" class="btn btn-success" ng-click="actualizar(data)">Aceptar</button> 
         <button type="button" class="btn btn-danger">Cancelar</button>
     </div><!--botones-->
 <!------------------------------------------------------------------------------------------------------------------------------>
-
-        
-        
-        
+</div>
+        </div>
+           
 
 </div><!--centro --> 
     
@@ -194,7 +191,7 @@
 
     
 
-<script src="app.js"></script>
+<script src="appCategoria.js"></script>
 </div><!--body -->  
 </div><!-- General -->
 </body>

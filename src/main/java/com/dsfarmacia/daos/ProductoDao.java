@@ -12,7 +12,7 @@ import java.util.List;
 
 
 
-public class ProductoDao {
+public class ProductoDao implements Producto {
   private Connection connect = null;
   private Statement statement = null;
   private ResultSet resultSet = null;
@@ -167,7 +167,7 @@ public class ProductoDao {
     return null;
   }
   // You need to close the resultSet
-  private void close() {
+   public void close() {
     try {
       if (resultSet != null) {
         resultSet.close();

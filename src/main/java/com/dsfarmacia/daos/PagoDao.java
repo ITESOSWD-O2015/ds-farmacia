@@ -10,7 +10,7 @@ import com.dsfarmacia.beans.BeanCategoria;
 import com.dsfarmacia.beans.BeanPago;
 import com.dsfarmacia.db.Conexion;
 
-public class PagoDao {
+public class PagoDao implements Pago {
 	
 	  private Connection connect = null;
 	  private Statement statement = null;
@@ -46,7 +46,7 @@ public class PagoDao {
 
 
 	  // You need to close the resultSet
-	  private void close() {
+	  public void close() {
 	    try {
 	      if (resultSet != null) {
 	        resultSet.close();

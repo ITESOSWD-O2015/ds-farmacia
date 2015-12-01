@@ -12,7 +12,7 @@ import java.util.List;
 
 
 
-public class ProveedorDao {
+public class ProveedorDao implements Proveedor{
 
   private Connection connect = null;
   private Statement statement = null;
@@ -137,7 +137,7 @@ public class ProveedorDao {
     return null;
   }
   // You need to close the resultSet
-  private void close() {
+  public void close() {
     try {
       if (resultSet != null) {
         resultSet.close();

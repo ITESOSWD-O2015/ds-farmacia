@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UnidadMedidaDao {
+public class UnidadMedidaDao implements UnidadMedida {
 
   private Connection connect = null;
   private Statement statement = null;
@@ -142,7 +142,7 @@ public class UnidadMedidaDao {
 
 
   // You need to close the resultSet
-  private void close() {
+  public void close() {
     try {
       if (resultSet != null) {
         resultSet.close();

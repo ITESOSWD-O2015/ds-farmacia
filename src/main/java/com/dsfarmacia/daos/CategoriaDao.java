@@ -12,7 +12,7 @@ import java.util.List;
 
 
 
-public class CategoriaDao {
+public class CategoriaDao implements Categoria{
   private Connection connect = null;
   private Statement statement = null;
   private ResultSet resultSet = null;
@@ -145,7 +145,7 @@ public class CategoriaDao {
     return null;
   }
   // You need to close the resultSet
-  private void close() {
+  public void close() {
     try {
       if (resultSet != null) {
         resultSet.close();

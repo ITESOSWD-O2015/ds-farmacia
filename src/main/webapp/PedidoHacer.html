@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Buscar producto</title>     
+<title> Hacer Pedido</title>     
         
    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -48,14 +48,14 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="InterfazCobro.html">Farmacias Vallarta</a>
+      <a class="navbar-brand" href="#">Farmacias Vallarta</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
         <li><a href="CategAgregar2.0.html">Categoria</a></li>
         <li><a href="InvAgregar2.0.html">Inventario</a></li> 
         <li><a href="ProvAgregar2.0.html">Proveedor</a></li> 
-      </ul>
+        </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -78,28 +78,13 @@
         <div id="sidebar-wrapper">
                 <ul class="sidebar-nav nav">
                     <li>  
-                        <a href="InvAgregar2.0.html">
-                            <span> <i class="fa fa-bar-chart"></i>  Agregar Producto</span>
+                        <a href="PedidoHacer.html">
+                            <span> <i class="fa fa-bar-chart"></i>  Agregar Pedido</span>
                         </a>
                     </li>
                     <li>
-                        <a href="InvActualizar2.0.html">
-                            <span> <i class="fa fa-pencil-square-o"></i>  Actualizar Producto</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="InvEliminar2.0.html">
-                            <span> <i class="fa fa-stethoscope"></i>  Eliminar Producto</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="InvBuscador2.0.html">
-                            <span> <i class="fa fa-ambulance"></i>  Buscar Producto</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Consultas.html">
-                            <span> <i class="fa fa-newspaper-o"></i>  Consultas</span>
+                        <a href="PedidoBuscar.html">
+                            <span> <i class="fa fa-pencil-square-o"></i>  Ver Pedidos</span>
                         </a>
                     </li>
                 </ul>
@@ -112,97 +97,81 @@
 
     
 <div class = "col-sm-8"> <!--centro --> 
-    <div ng-controller="BuscarID">
-
+    
 <!-------------------------------------------------------------------------Buscador ----------------------------------------->
     <div class="jumbotron text-center" ><!- jumbotron -->
-        <h1>Hello Buscador !</h1>
+        <h1>Hello Surtidor !</h1>
         
-            <form class="form-inline"><!-- inline -->                
-            <div class="form-group"><!-- form group -->
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                        <input type="text" class="form-control" id="exampleInputAmount" ng-model="product" placeholder="Nombre o ID ?">
-                </div>
-            </div><!-- form group -->
-                                
-                <button type="submit" class="btn btn-primary" ng-click="look()">Buscar</button>  
-                <button type="button" class="btn btn-success" ng-click="all()">Desplegar</button>
-        </form><!-- inline -->   
-        
-   
+       
      </div><!- jumbotron -->
         
         
+
+<!------------------------------------------------------------------------------------------------------------------------------>
+<!--------------------------------------------------------Formulario Actualizar------------------------------------------------->
+    
+    <form role="form">
+
+        
+        
+      <div class="dropdown" style = "margin-bottom: 3em">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Nombre del Proveedor
+                <span class="caret"></span>
+            </button>
+          
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Fausto SA de CV</a></li>
+ 
+            <!-- <li role="separator" class="divider"></li>-->
+            </ul>
+      </div>
+
+    </form>
+    
+
 <!------------------------------------------------------------------------------------------------------------------------------>
 <!-------------------------------------------------------------------------Tabla ----------------------------------------------->
         
-    <table class="table table-striped">
-                                
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Precio Venta</th>
-        <th>Impuesto</th>
-        <th>Cantidad</th>
-        <th>Fecha Caducidad</th>
-        <th>Proveedor</th>
-         <th>Categoria</th>
-         <th>Unidad Medida</th>
-      </tr>
-    </thead>
     
-       <tbody>
-      <tr >
-        <td>{{data.productId}}</td>
-         <td>{{data.productoNombre}}</td>
-        <td>{{data.precioVenta}}</td>
-        <td>{{data.iva}}</td>
-        <td>{{data.cantidad}}</td>
-        <td>{{data.fechaCaducicad}}</td>
-        <td>{{data.proveedorNombre}}</td>
-        <td>{{data.categoriaNombre}}</td>
-         <td>{{data.unidadmedidaNombre}}</td>
-      </tr>
-      
-        <tr ng-repeat="x in data">
-        <td>{{x.productId}}</td>
-         <td>{{x.productoNombre}}</td>
-        <td>{{x.precioVenta}}</td>
-        <td>{{x.iva}}</td>
-        <td>{{x.cantidad}}</td>
-        <td>{{x.fechaCaducicad}}</td>
-        <td>{{x.proveedorNombre}}</td>
-        <td>{{x.categoriaNombre}}</td>
-         <td>{{x.unidadmedidaNombre}}</td>
-      </tr>
- 
- 
- 
+    <div class="row">
+        <div class ="col-xs-12">
+            <div class=" text-center"  style = "margin-bottom: 4em"><!--botones-->
 
-      <tr ng-repeat="x in products">
-        <td>{{x.productId}}</td>
-         <td>{{x.productoNombre}}</td>
-        <td>{{x.precioVenta}}</td>
-        <td>{{x.iva}}</td>
-        <td>{{x.cantidad}}</td>
-        <td>{{x.fechaCaducicad}}</td>
-        <td>{{x.proveedorNombre}}</td>
-        <td>{{x.categoriaNombre}}</td>
-         <td>{{x.unidadmedidaNombre}}</td>
-      </tr>
+                <table class="table table-striped">
+                                
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="nombreProducto" class="form-control" id="nombreProducto"></td>
+                            <td><input type="cantidad" class="form-control" id="cantidad"></td>
+                        </tr>
  
-    </tbody>
-  </table>
+                    </tbody>
+                </table>
+            </div>
+    
+        </div>
+     </div>
+<!------------------------------------------------------------------------------------------------------------------------------>
+<!-----------------------------------------------------------------------Botones ----------------------------------------------->
+
+    <div class=" text-center" style = "margin-top: 1em"><!--botones-->
+        <button type="button" class="btn btn-success">Aceptar</button> 
+        <button type="button" class="btn btn-danger">Cancelar</button>
+    </div><!--botones-->
 <!------------------------------------------------------------------------------------------------------------------------------>
 
+        
+        
+                
 
-        
-        
-  </div>    <!--Controller -->    
- 
+
 </div><!--centro --> 
     
     

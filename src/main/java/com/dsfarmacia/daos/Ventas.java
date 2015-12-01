@@ -29,7 +29,7 @@ public class Ventas {
         + "p.IDProducto=tp.IDProducto and ";
     switch (filter) {
       case 1:
-        sql = sql + "t.Nombre ='" + input + "'";
+        sql = sql + "t.User ='" + input + "'";
         break;
       case 2:
         sql = sql + "p.Descripcion ='" + input + "'";

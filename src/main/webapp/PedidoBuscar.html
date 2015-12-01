@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Buscar producto</title>     
+<title>Buscar proveedor</title>     
         
    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -48,7 +48,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="InterfazCobro.html">Farmacias Vallarta</a>
+      <a class="navbar-brand" href="#">Farmacias Vallarta</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
@@ -78,28 +78,13 @@
         <div id="sidebar-wrapper">
                 <ul class="sidebar-nav nav">
                     <li>  
-                        <a href="InvAgregar2.0.html">
-                            <span> <i class="fa fa-bar-chart"></i>  Agregar Producto</span>
+                        <a href="PedidoHacer.html">
+                            <span> <i class="fa fa-bar-chart"></i>  Agregar Pedido</span>
                         </a>
                     </li>
                     <li>
-                        <a href="InvActualizar2.0.html">
-                            <span> <i class="fa fa-pencil-square-o"></i>  Actualizar Producto</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="InvEliminar2.0.html">
-                            <span> <i class="fa fa-stethoscope"></i>  Eliminar Producto</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="InvBuscador2.0.html">
-                            <span> <i class="fa fa-ambulance"></i>  Buscar Producto</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Consultas.html">
-                            <span> <i class="fa fa-newspaper-o"></i>  Consultas</span>
+                        <a href="PedidoBuscar.html">
+                            <span> <i class="fa fa-pencil-square-o"></i>  Ver Pedidos</span>
                         </a>
                     </li>
                 </ul>
@@ -112,97 +97,70 @@
 
     
 <div class = "col-sm-8"> <!--centro --> 
-    <div ng-controller="BuscarID">
-
+    
 <!-------------------------------------------------------------------------Buscador ----------------------------------------->
     <div class="jumbotron text-center" ><!- jumbotron -->
         <h1>Hello Buscador !</h1>
         
-            <form class="form-inline"><!-- inline -->                
+        <form class="form-inline"><!-- inline -->                
             <div class="form-group"><!-- form group -->
                 <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                        <input type="text" class="form-control" id="exampleInputAmount" ng-model="product" placeholder="Nombre o ID ?">
+                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Nombre o Id ?">
                 </div>
             </div><!-- form group -->
                                 
-                <button type="submit" class="btn btn-primary" ng-click="look()">Buscar</button>  
-                <button type="button" class="btn btn-success" ng-click="all()">Desplegar</button>
+                <button type="submit" class="btn btn-primary">Buscar</button>    
+                <button type="button" class="btn btn-success">Desplegar</button>
+
         </form><!-- inline -->   
-        
-   
      </div><!- jumbotron -->
         
         
+
 <!------------------------------------------------------------------------------------------------------------------------------>
-<!-------------------------------------------------------------------------Tabla ----------------------------------------------->
+
+<!-----CUADRO TOTAL, SUBTOTAL IVA ---------------------------------------------------------------------------------------------->
+<div class = "row "><!--CUADRO--> 
+    <div class = "col-md-12"><!-- Pedido -->
+        <div class="panel panel-default"><!--panel-->
+            <div class="panel-heading">Nombre Del Proveedor</div>
+                   
+                   <div class="panel-body"> 
+                       
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label" for="subtotal">Subtotal</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="text" id="subtotal" placeholder="Subtotal $ : xxxxxxxxxx " ng-model="dinerito.subtotal" readonly> 
+                                </div>
+                            </div>
+ 
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label" for="subtotal">Total</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="text" placeholder="Total $ : xxxxxxxxxxxx" ng-model="dinerito.total" readonly>
+                                </div>
+                            </div>
+                       </form>
+                   </div><!--panel body-->
+
+         </div> <!--panel-->
+    </div><!-- Pedido -->   
+</div><!--CUADROS--> 
         
-    <table class="table table-striped">
-                                
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Precio Venta</th>
-        <th>Impuesto</th>
-        <th>Cantidad</th>
-        <th>Fecha Caducidad</th>
-        <th>Proveedor</th>
-         <th>Categoria</th>
-         <th>Unidad Medida</th>
-      </tr>
-    </thead>
+    <!-- -------------------------------------------------------------------------------------------------------------------> 
     
-       <tbody>
-      <tr >
-        <td>{{data.productId}}</td>
-         <td>{{data.productoNombre}}</td>
-        <td>{{data.precioVenta}}</td>
-        <td>{{data.iva}}</td>
-        <td>{{data.cantidad}}</td>
-        <td>{{data.fechaCaducicad}}</td>
-        <td>{{data.proveedorNombre}}</td>
-        <td>{{data.categoriaNombre}}</td>
-         <td>{{data.unidadmedidaNombre}}</td>
-      </tr>
-      
-        <tr ng-repeat="x in data">
-        <td>{{x.productId}}</td>
-         <td>{{x.productoNombre}}</td>
-        <td>{{x.precioVenta}}</td>
-        <td>{{x.iva}}</td>
-        <td>{{x.cantidad}}</td>
-        <td>{{x.fechaCaducicad}}</td>
-        <td>{{x.proveedorNombre}}</td>
-        <td>{{x.categoriaNombre}}</td>
-         <td>{{x.unidadmedidaNombre}}</td>
-      </tr>
- 
- 
- 
-
-      <tr ng-repeat="x in products">
-        <td>{{x.productId}}</td>
-         <td>{{x.productoNombre}}</td>
-        <td>{{x.precioVenta}}</td>
-        <td>{{x.iva}}</td>
-        <td>{{x.cantidad}}</td>
-        <td>{{x.fechaCaducicad}}</td>
-        <td>{{x.proveedorNombre}}</td>
-        <td>{{x.categoriaNombre}}</td>
-         <td>{{x.unidadmedidaNombre}}</td>
-      </tr>
- 
-    </tbody>
-  </table>
-<!------------------------------------------------------------------------------------------------------------------------------>
-
-
+    
+    
+    
+    
+    
+    
         
         
-  </div>    <!--Controller -->    
- 
+
 </div><!--centro --> 
     
     

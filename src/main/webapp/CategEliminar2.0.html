@@ -48,7 +48,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Farmacias Vallarta</a>
+      <a class="navbar-brand" href="InterfazCobro.html">Farmacias Vallarta</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
@@ -112,9 +112,12 @@
 
     
 <div class = "col-sm-8"> <!--centro --> 
+
+<div ng-controller ="BuscarCategoriaID">
+       			<div ng-controller="EliminarCategoria">
     
 <!-------------------------------------------------------------------------Buscador ----------------------------------------->
-    <div class="jumbotron text-center" style = "margin-bottom: 3em" ><!- jumbotron -->
+    <div class="jumbotron text-center" style = "margin-bottom: 3em" >
         <h1>Hello Eliminador !</h1>
         
             <form class="form-inline"><!-- inline -->                
@@ -122,21 +125,20 @@
                 <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Nombre o Id ?">
+                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Nombre o Id ?" ng-model="categoria">
                 </div>
             </div><!-- form group -->
                                 
-                <button type="submit" class="btn btn-primary">Seek And Destroy</button>  
+                <button type="submit" class="btn btn-primary" ng-click="look(categoria)">Seek And Destroy</button>  
         </form><!-- inline -->   
         
    
-     </div><!- jumbotron -->
-        
+     </div>
         
 
 <!------------------------------------------------------------------------------------------------------------------------------>
 <!-------------------------------------------------------------------------Tabla ----------------------------------------------->
-        
+           
     
     <div class="row">
         <div class ="col-xs-12">
@@ -147,19 +149,15 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Item</th>
-                            <th>Stock</th>
-                            <th>Costo De Compra</th>
-                            <th>Costo De Venta</th>
+                            <th>Nombre</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>24544711</td>
-                            <td>Mona China SAO</td>
-                            <td>2</td>
-                            <td>800</td>
-                            <td>1600</td>
+                            <td>{{data.categoriaId}}</td>
+                            <td>{{data.categorianombre}}</td>
+                          
                         </tr>
  
                     </tbody>
@@ -177,14 +175,14 @@
     <div><h1></h1></div>
     
     <div class=" text-center" ><!--botones-->
-        <button type="button" class="btn btn-success">Si, Kill 'Em All !</button> 
+        <button type="button" class="btn btn-success" ng-click="eliminar()">Si, Kill 'Em All !</button> 
         <button type="button" class="btn btn-danger">No, Siempre No</button>
     </div><!--botones-->
 
 <!------------------------------------------------------------------------------------------------------------------------------>
         
-        
-        
+ </div>       
+   </div>        
 
 </div><!--centro --> 
     
@@ -211,7 +209,7 @@
 
     
 
-<script src="app.js"></script>
+<script src="appCategoria.js"></script>
 </div><!--body -->  
 </div><!-- General -->
 </body>

@@ -20,10 +20,11 @@ public class Login {
   public String getactive() {
     return active;
   }
+  
   public String getiduser() {
-	    return iduser;
+    return iduser;
   }
-	  
+  
   public String getcategory() {
     return category;
   }

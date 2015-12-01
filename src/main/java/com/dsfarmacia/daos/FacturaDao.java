@@ -10,7 +10,7 @@ import java.util.List;
 import com.dsfarmacia.beans.BeanFactura;
 import com.dsfarmacia.db.Conexion;
 
-public class FacturaDao {
+public class FacturaDao implements Factura{
 	
 	 private Connection connect = null;
 	  private Statement statement = null;
@@ -88,7 +88,7 @@ public class FacturaDao {
 	    return null;
 	  }
 	  // You need to close the resultSet
-	  private void close() {
+	  public void close() {
 	    try {
 	      if (resultSet != null) {
 	        resultSet.close();

@@ -3,6 +3,7 @@ package com.dsfarmacia.controllers;
 import com.dsfarmacia.beans.BeanFactura;
 import com.dsfarmacia.beans.BeanFacturaDetalle;
 import com.dsfarmacia.daos.FacturaDao;
+import com.dsfarmacia.daos.FacturaDetalle;
 import com.dsfarmacia.daos.FacturaDetalleDao;
 
 public class FacturaDetalleController {
@@ -11,7 +12,7 @@ public class FacturaDetalleController {
 	
 
 public static BeanFacturaDetalle save(BeanFacturaDetalle bean) { // El metodo recibe el bean del metodo POST
-    FacturaDetalleDao dao = new FacturaDetalleDao(); //Se instancia el dao
+    FacturaDetalle dao = new FacturaDetalleDao(); //Se instancia el dao
     return dao.save(bean); // Se le envia el bean al metodo de save para guardar los datos en la BD
   }
 

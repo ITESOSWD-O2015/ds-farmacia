@@ -41,14 +41,14 @@
     
 <body ng-app = "myApp">
     
-<div class="contenedor-fluid"> <!-- General -->
+<div class="contenedor-fluid">    <!-- General -->
       
 <!-- BARRA MENU ----------------------------------------------------------------------------------------------------->
     
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Farmacias Vallarta</a>
+      <a class="navbar-brand" href="InterfazCobro.html">Farmacias Vallarta</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
@@ -114,11 +114,13 @@
 <div class = "col-sm-8"> <!--centro --> 
     
 <!-------------------------------------------------------------------------Buscador ----------------------------------------->
-    <div class="jumbotron text-center" ><!- jumbotron -->
-        <h1>Hello Categoria !</h1>
+    <div class="jumbotron text-center" >
+         <h1>Hello Agregar !</h1>
         
  
-     </div><!- jumbotron -->
+     </div>
+     
+     <div ng-controller="AgregarCategoria">
         
         
 
@@ -130,28 +132,23 @@
     
   <div class="form-group">
     <label for="name"> Nombre de categoria:</label>
-    <input type="name" class="form-control" id="name" ng-model="resultado.nombre">
+    <input type="name" class="form-control" id="name" ng-model="data.categorianombre">
   </div>
     
 
-  <div class="form-group">
-    <label for="comment">Comentarios :</label>
-    <textarea class="form-control" rows="5" id="comment"></textarea>
-  </div>
-    
 
 <!------------------------------------------------------------------------------------------------------------------------------>
 <!-----------------------------------------------------------------------Botones ----------------------------------------------->
 
     <div class=" text-center" style = "margin-top: 3em"><!--botones-->
-        <button type="button" class="btn btn-success">Aceptar</button> 
+        <button type="button" class="btn btn-success" ng-click="add()">Aceptar</button> 
         <button type="button" class="btn btn-danger">Cancelar</button>
     </div><!--botones-->
 <!------------------------------------------------------------------------------------------------------------------------------>
 
         
         
-        
+  </div>      
 
 </div><!--centro --> 
     
@@ -178,7 +175,7 @@
 
     
 
-<script src="app.js"></script>
+<script src="appCategoria.js"></script>
 </div><!--body -->  
 </div><!-- General -->
 </body>

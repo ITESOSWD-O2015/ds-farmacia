@@ -6,6 +6,8 @@ public class BeanReceta {
 	private int cedulaProfesional;
 	private String nombreDoctor;
 	private String fecha;
+	private int productId;
+	private String sproduct;
 	
 	public int getRecetaId() {
 		return recetaId;
@@ -36,6 +38,18 @@ public class BeanReceta {
 	public String toString() {
 		return "BeanReceta [recetaId=" + recetaId + ", cedulaProfesional=" + cedulaProfesional + ", nombreDoctor="
 				+ nombreDoctor + ", fecha=" + fecha + "]";
+	}
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+	public String getSproduct() {
+		return sproduct;
+	}
+	public void setSproduct(String sproduct) {
+		this.sproduct = sproduct;
 	}
 	
 

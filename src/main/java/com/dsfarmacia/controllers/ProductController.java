@@ -1,20 +1,22 @@
 package com.dsfarmacia.controllers;
 
 import com.dsfarmacia.beans.BeanProducto;
+import com.dsfarmacia.daos.Producto;
 import com.dsfarmacia.daos.ProductoDao;
 
 import java.util.List;
 
-public class ProductController {
-  private static ProductController ctrl;
-  //En caso se quiera agregar un producto, el controlador manda a llamar el dao de guardar.
+//Clase Controlador Producto
+public class ProductController {  
+	// controller 
+  private static ProductController ctrl;     
   /**.
   * @param bean bean
   * @return producto
   */
-  public static BeanProducto saveProduct(BeanProducto bean) {   
+  public static BeanProducto saveProduct(BeanProducto bean) {    // NOPMD by ShaSkills on 30/11/15 18:28
     // El metodo recibe el bean del metodo POST
-    ProductoDao dao = new ProductoDao(); //Se instancia el dao
+   Producto dao = new ProductoDao(); //Se instancia el dao
     return dao.save(bean); // Se le envia el bean al metodo de save para guardar los datos en la BD
   }
   
@@ -22,7 +24,7 @@ public class ProductController {
   * @param bean bean 
   * @return producto
   */
-  public BeanProducto updateProduct(BeanProducto bean) {
+  public BeanProducto updateProduct(BeanProducto bean) { // NOPMD by ShaSkills on 30/11/15 18:30
     // El metodo recibe el bean del metodo PUT
     ProductoDao dao = new ProductoDao(); //Se instancia el dao//Se instancia el dao
     return dao.update(bean); 
@@ -42,10 +44,10 @@ public class ProductController {
   * @param id id prod
   * @return success
   */
-  public boolean delete(String id) {  
+  public boolean delete(String identificador) {   // NOPMD by ShaSkills on 30/11/15 18:30
     // El metodo recibe el bean del metodo GET
-    ProductoDao dao = new ProductoDao(); //Se instancia el dao//Se instancia el dao
-    return dao.delete(id); //Se le envia el id del producto a eliminar al DAO.
+     ProductoDao dao = new ProductoDao(); //Se instancia el dao//Se instancia el dao
+    return dao.delete(identificador); //Se le envia el id del producto a eliminar al DAO.
   
   }
   /**.
@@ -53,7 +55,7 @@ public class ProductController {
   */
   public static ProductController getController() {
     //Metodo que envia el controlador al servicio REST
-    if (ctrl == null) { //En caso de que no exista el controlador, se instancia.
+    if (ctrl == null) { //En caso de que no exista el controlador, se instancia. // NOPMD by ShaSkills on 30/11/15 18:31
       ctrl = new ProductController();
     }
     return ctrl;
